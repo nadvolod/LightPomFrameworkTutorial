@@ -8,6 +8,7 @@ namespace Framework.Pages
 
     public static class Pages
     {
+                                     //constraint on a parameter   
         private static T GetPage<T>() where T : new()
         {
             var page = new T();
@@ -23,6 +24,11 @@ namespace Framework.Pages
         public static MyMembershipPage MyMembership
         {
             get { return GetPage<MyMembershipPage>(); }
+        }
+
+        public static EditProfilePage EditProfile
+        {
+            get { return GetPage<EditProfilePage>(); }
         }
     }
 }

@@ -3,11 +3,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{80586626-A8CD-4983-9F0A-D4FFF839AAB0}</ProjectGuid>
+    <ProjectGuid>{FF892CA2-818D-4B0C-8589-D32D41137D2D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>QtpTests</RootNamespace>
-    <AssemblyName>QtpTests</AssemblyName>
+    <RootNamespace>FrameworkTests</RootNamespace>
+    <AssemblyName>FrameworkTests</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -41,6 +41,10 @@
       <HintPath>..\packages\Selenium.WebDriver.2.47.0\lib\net40\WebDriver.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="WebDriver.Support, Version=2.47.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Selenium.Support.2.47.0\lib\net40\WebDriver.Support.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -55,16 +59,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="LoginWithInvalidPasswordShouldNotWork.cs" />
-    <Compile Include="LoginWithInvalidUserNameShouldNotWork2.cs" />
-    <Compile Include="LoginWithInvalidUserNameShouldNotWork.cs" />
-    <Compile Include="TestBase.cs" />
-    <Compile Include="ElementIdentification.cs" />
-    <Compile Include="ValidUserCanSuccessfullyAccessEditProfilePage.cs" />
-    <Compile Include="ValidUserCanSuccessfullyLogin4.cs" />
-    <Compile Include="ValidUserCanSuccessfullyLogin3.cs" />
-    <Compile Include="ValidUserCanSuccessfullyLogin2.cs" />
-    <Compile Include="ValidUserCanSuccessfullyLogin.cs" />
+    <Compile Include="BrowserTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
