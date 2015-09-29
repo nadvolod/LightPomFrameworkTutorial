@@ -45,3 +45,5 @@ Temporary Items
 *\bin
 *\obj
 packages*
+.vs/LightPomFramework/v14/.suo
+Framework/Drivers/chromedriver.exe
