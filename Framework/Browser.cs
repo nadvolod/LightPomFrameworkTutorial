@@ -2,15 +2,21 @@ using System;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System.Threading;
-using OpenQA.Selenium.Remote;
 using System.IO;
-using OpenQA.Selenium.Edge;
+using System.Reflection;
 
 namespace Framework
 {
+    public enum Drivers
+    {
+        Chrome,
+        Firefox,
+        IE
+    }
     public static class Browser
     {
-        private static IWebDriver _webDriver = new ChromeDriver(@"C:\Source\Github\SeleniumCourse\LightPomFrameworkTutorial\Framework\Drivers");
+
+        private static IWebDriver _webDriver = GetDriver(Drivers.Chrome);
 
         private static string _baseUrl = "http://www.qtptutorial.net";
 
@@ -20,19 +26,13 @@ namespace Framework
             _webDriver.SwitchTo().Window(windows[tabIndex]);
         }
 
-        //private static IWebDriver GetDriver()
-        //{
-        //    IWebDriver driver;
-        //    try
-        //    {
-        //        driver = new ChromeDriver();
-        //    }
-        //    catch (Exception e)
-        //    {
-
-        //    }
-        //    return new ChromeDriver();
-        //}
+        internal static IWebDriver GetDriver(Drivers driver)
+        {
+            var outPutDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            var relativePath = @"..\..\..\Framework\Drivers";
+            var chromeDriverPath = Path.GetFullPath(Path.Combine(outPutDirectory, relativePath));
+            return new ChromeDriver(chromeDriverPath);
+        }
 
         public static bool WaitUntilElementIsDisplayed(By element, int timeoutInSeconds)
         {

@@ -1,6 +1,3 @@
-using System.Drawing.Printing;
-using System.Runtime.InteropServices;
-using System.Xml;
 using OpenQA.Selenium.Support.PageObjects;
 
 namespace Framework.Pages

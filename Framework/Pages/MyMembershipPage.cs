@@ -1,5 +1,4 @@
 using OpenQA.Selenium;
-using System.Threading;
 
 namespace Framework.Pages
 {
