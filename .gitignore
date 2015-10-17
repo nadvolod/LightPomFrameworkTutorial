@@ -44,7 +44,7 @@ Temporary Items
 *.dll
 *\bin
 *\obj
-packages*
+
 .vs/LightPomFramework/v14/.suo
 Framework/Drivers/chromedriver.exe
 # Ignore NuGet Packages
