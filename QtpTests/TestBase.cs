@@ -6,16 +6,16 @@ namespace QtpTests
     public class TestBase
     {
         [TestInitialize]
-        public static void Initialize()
+        public void Initialize()
         {
             Browser.Initialize();
         }
 
         [TestCleanup]
-        public static void Cleanup()
+        public void Cleanup()
         {
             Browser.Close();
-            //Browser.Quit();
+            Browser.Quit();
         }
     }
 }

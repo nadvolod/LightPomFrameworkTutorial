@@ -46,7 +46,6 @@ Temporary Items
 *\obj
 
 .vs/LightPomFramework/v14/.suo
-Framework/Drivers/chromedriver.exe
 # Ignore NuGet Packages
 *.nupkg
 # Ignore the packages folder
