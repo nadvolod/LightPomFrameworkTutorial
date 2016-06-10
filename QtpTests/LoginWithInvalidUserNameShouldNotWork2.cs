@@ -8,7 +8,7 @@ namespace QtpTests
     public class LoginWithInvalidUserNameShouldNotWork2 : TestBase
     {
         [TestMethod]
-        public void RunTest()
+        public void LoginWithInvalidUserNameShouldNotWork()
         {
             Pages.Login.Goto();
             Pages.Login.Login("INvalidSeleniumHacker", "Test12345!!$");

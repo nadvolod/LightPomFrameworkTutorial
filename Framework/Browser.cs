@@ -80,9 +80,9 @@ namespace Framework
             _webDriver.Close();
         }
 
-        public static void Goto(string url, bool userBaseUrl = true)
+        public static void Goto(string url, bool useBaseUrl = true)
         {
-            if (userBaseUrl)
+            if (useBaseUrl)
                 _webDriver.Navigate().GoToUrl(string.Format("{0}/{1}", _baseUrl, url));
             else
                 _webDriver.Navigate().GoToUrl(url);

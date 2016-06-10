@@ -3,6 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace QtpTests
 {
+    [TestClass]
     public class TestBase
     {
         [TestInitialize]

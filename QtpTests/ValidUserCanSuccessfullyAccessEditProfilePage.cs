@@ -7,7 +7,7 @@ namespace QtpTests
     public class ValidUserCanSuccessfullyAccessEditProfilePage : TestBase
     {
         [TestMethod]
-        public void RunTest()
+        public void AccessEditProfilePage()
         {
             Pages.Login.Goto();
             Pages.Login.Login("seleniumTestUser", "Test12345!!$");

@@ -7,7 +7,7 @@ namespace QtpTests
     public class ValidUserCanSuccessfullyLogin4 : TestBase
     {
         [TestMethod]
-        public void RunTest()
+        public void ValidUserCanSuccessfullyLogin()
         {
             Pages.Login.Goto();
             Pages.Login.Login("seleniumTestUser", "Test12345!!$");
