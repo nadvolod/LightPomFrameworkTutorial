@@ -11,7 +11,7 @@ namespace QtpTests
         public void LoginWithInvalidUserNameShouldNotWork()
         {
             Pages.Login.Goto();
-            Pages.Login.Login("INvalidSeleniumHacker", "Test12345!!$");
+            Pages.Login.LoginWithoutClef("INvalidSeleniumHacker", "Test12345!!$");
             Assert.IsFalse(Pages.MyMembership.IsAt());
         }
     }

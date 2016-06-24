@@ -1,21 +1,28 @@
 ﻿using Framework;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit;
+using NUnit.Framework;
 
 namespace QtpTests
 {
-    [TestClass]
+    [TestFixture]
     public class TestBase
     {
-        [TestInitialize]
-        public void Initialize()
+        [SetUp]
+        public static void Setup()
         {
             Browser.Initialize();
         }
 
-        [TestCleanup]
-        public void Cleanup()
+        [TearDown]
+        public static void Cleanup()
         {
             Browser.Close();
+            Browser.Quit();
+        }
+
+        [OneTimeTearDown]
+        public static void FinalClean()
+        {
             Browser.Quit();
         }
     }

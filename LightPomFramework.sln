@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QtpTests", "QtpTests\QtpTes
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrameworkTests", "FrameworkTests\FrameworkTests.csproj", "{FF892CA2-818D-4B0C-8589-D32D41137D2D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QtpTestv2", "QtpTestv2\QtpTestv2.csproj", "{524E71FC-F741-4EE0-8863-2C67F0C3428D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{FF892CA2-818D-4B0C-8589-D32D41137D2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FF892CA2-818D-4B0C-8589-D32D41137D2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FF892CA2-818D-4B0C-8589-D32D41137D2D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{524E71FC-F741-4EE0-8863-2C67F0C3428D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{524E71FC-F741-4EE0-8863-2C67F0C3428D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{524E71FC-F741-4EE0-8863-2C67F0C3428D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{524E71FC-F741-4EE0-8863-2C67F0C3428D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
