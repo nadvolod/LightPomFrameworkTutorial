@@ -1,14 +1,14 @@
 ﻿using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Firefox;
 
 namespace QtpTests
 {
     [TestClass]
     public class ElementIdentification : TestBase
     {
-        static IWebDriver driver = new ChromeDriver();
+        static IWebDriver driver = new FirefoxDriver();
         private IWebElement element;
         private By locator;
 

@@ -7,6 +7,18 @@ namespace FrameworkTests
     [TestClass]
     public class BrowserTests
     {
+        [TestInitialize]
+        public void TestSetup()
+        {
+            Browser.Initialize();
+        }
+
+        [TestCleanup]
+        public void TestCleanup()
+        {
+            Browser.Close();
+            Browser.Quit();
+        }
         [TestMethod]
         public void GivenValidElement_WhenElementIsVisible_ElementIsDisplayedFindsElement()
         {
@@ -30,5 +42,7 @@ namespace FrameworkTests
             Assert.IsFalse(Browser.ElementIsDisplayed(By.Id("hello")),
                 "ElementIsDisplayed found an element that should not have been found");
         }
+
+
     }
 }

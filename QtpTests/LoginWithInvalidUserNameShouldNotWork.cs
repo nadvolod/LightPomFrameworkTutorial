@@ -1,6 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Firefox;
 
 
 namespace QtpTests
@@ -12,7 +12,7 @@ namespace QtpTests
         public void RunTest()
         {
             //here we create a new instance of the Firefox driver
-            var driver = new ChromeDriver();
+            var driver = new FirefoxDriver();
             driver.Navigate().GoToUrl("https://www.qtptutorial.net/wp-login.php");
 
             //find the field for ther user name

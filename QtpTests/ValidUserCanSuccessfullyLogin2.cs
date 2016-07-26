@@ -1,13 +1,13 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Firefox;
 
 namespace QtpTests
 {
     [TestClass]
     public class ValidUserCanSuccessfullyLogin2
     {
-        static  IWebDriver driver = new ChromeDriver();
+        static  IWebDriver driver = new FirefoxDriver();
 
         [TestMethod]
         public void RunTest()
