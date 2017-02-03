@@ -9,6 +9,7 @@ using OpenQA.Selenium.Firefox;
 namespace ElementInteractions
 {
     [TestClass]
+    [TestCategory("Identification and manipulations")]
     public class ElementIdentification
     {
         static IWebDriver driver;
@@ -120,6 +121,29 @@ namespace ElementInteractions
             IList<IWebElement> tables = driver.FindElements(locator);
         }
 
+        [TestMethod]
+        [TestCategory("Navigation")]
+        public void SeleniumNavigation()
+        {
+            driver.Navigate().GoToUrl("http://www.ultimateqa.com/automation");
+            driver.Navigate().Forward();
+            driver.Navigate().Back();
+            driver.Navigate().Refresh();
+        }
+
+        [TestMethod]
+        [TestCategory("Navigation")]
+        public void SeleniumNavigationTest()
+        {
+            //Go here and assert for title - "http://www.ultimateqa.com"
+            //Go here and assert for title - "http://www.ultimateqa.com/automation"
+
+            //Go here and assert for title - "http://www.ultimateqa.com/automation"
+            //Click link with href - /complicated-page
+            //assert page title 'Complicated Page - Ultimate QA'
+            //Go back
+            //assert page title equals - 'Automation Practice - Ultimate QA'
+        }
         [TestCleanup]
         public void CleanUp()
         {
