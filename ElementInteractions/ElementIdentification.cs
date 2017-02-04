@@ -144,23 +144,6 @@ namespace ElementInteractions
             //Go back
             //assert page title equals - 'Automation Practice - Ultimate QA'
         }
-
-        [TestMethod]
-        [TestCategory("Manipulation")]
-        public void Manipulation()
-        {
-            driver.Navigate().GoToUrl("http://www.ultimateqa.com/filling-out-forms/");
-            var nameField = driver.FindElement(By.Id("et_pb_contact_name_1"));
-            //nameField.GetAttribute();
-            //nameField.GetCssValue();
-            //nameField.Displayed;
-            //nameField.Enabled;
-            //nameField.Location;
-            //nameField.Selected;
-            //nameField.Size;
-            //nameField.TagName;
-            //nameField.Text;
-        }
         [TestCleanup]
         public void CleanUp()
         {
