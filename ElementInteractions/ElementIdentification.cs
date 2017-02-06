@@ -1,10 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
+using OpenQA.Selenium.Remote;
 
 namespace ElementInteractions
 {
@@ -136,13 +138,19 @@ namespace ElementInteractions
         public void SeleniumNavigationTest()
         {
             //Go here and assert for title - "http://www.ultimateqa.com"
+            driver.Navigate().GoToUrl("http://www.ultimateqa.com");
+            Assert.AreEqual("Home - Ultimate QA", driver.Title);
             //Go here and assert for title - "http://www.ultimateqa.com/automation"
-
-            //Go here and assert for title - "http://www.ultimateqa.com/automation"
+            driver.Navigate().GoToUrl("http://www.ultimateqa.com/automation");
+            Assert.AreEqual("Automation Practice - Ultimate QA", driver.Title);
             //Click link with href - /complicated-page
+            driver.FindElement(By.XPath("//*[@href='/complicated-page']")).Click();
             //assert page title 'Complicated Page - Ultimate QA'
+            Assert.AreEqual("Complicated Page - Ultimate QA", driver.Title);
             //Go back
+            driver.Navigate().Back();
             //assert page title equals - 'Automation Practice - Ultimate QA'
+            Assert.AreNotEqual("Automation Practice - Ultimate QA", driver.Title);
         }
         [TestCleanup]
         public void CleanUp()
