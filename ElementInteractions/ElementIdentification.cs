@@ -192,6 +192,45 @@ namespace ElementInteractions
 
             driver.FindElement(By.XPath("//*[@class='et_pb_contact_submit et_pb_button']")).Submit();
         }
+
+        [TestMethod]
+        [TestCategory("Driver Interrogation")]
+        public void DriverLevelInterrogation()
+        {
+            var x = driver.CurrentWindowHandle;
+            x = driver.PageSource;
+            x = driver.Title;
+            x = driver.Url;
+            var y = driver.WindowHandles;
+        }
+
+        [TestMethod]
+        [TestCategory("Element Interrogation")]
+        public void ElementInterrogation()
+        {
+            var myElement = driver.FindElement(By.Id(""));
+        }
+
+        [TestMethod]
+        [TestCategory("Element Interrogation")]
+        public void ElementInterrogationTest()
+        {
+            //1. find button by Id
+            //2. GetAttribute("type") and assert that it equals "submit"
+            //3. GetCssValue()
+            //4. Assert that it's Displayed
+            //5. Assert that it's Enabled
+            //6. Assert that it's NOT selected
+            //7. Assert that the TextName is "Click Me!"
+            //8. Assert that the TagName is "button"
+            //9. Assert that the size is a specific value 72x21
+            //10. Assert that the location is a specific coordinate, but of course it won't be, so the students will try, but will realize that it can't work
+            var myElement = driver.FindElement(By.Id(""));
+        }
+
+
+
+
         [TestCleanup]
         public void CleanUp()
         {
