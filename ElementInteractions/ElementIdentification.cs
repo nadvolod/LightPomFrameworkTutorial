@@ -150,7 +150,45 @@ namespace ElementInteractions
             //Go back
             driver.Navigate().Back();
             //assert page title equals - 'Automation Practice - Ultimate QA'
-            Assert.AreNotEqual("Automation Practice - Ultimate QA", driver.Title);
+            Assert.AreEqual("Automation Practice - Ultimate QA", driver.Title);
+        }
+        [TestMethod]
+        [TestCategory("Manipulation")]
+        public void Manipulation()
+        {
+            driver.Navigate().GoToUrl("http://www.ultimateqa.com/filling-out-forms/");
+            //find the name field
+            //clear the field
+            //type into the field
+
+            //find the text field
+            //clear the field
+            //type into the field
+
+            //submit
+        }
+
+        [TestMethod]
+        [TestCategory("Manipulation")]
+        public void ManipulationTest()
+        {
+            driver.Navigate().GoToUrl("http://www.ultimateqa.com/filling-out-forms/");
+            var name = driver.FindElements(By.Id("et_pb_contact_name_1"));
+            name[1].SendKeys("test");
+
+            var textArea = driver.FindElements(By.Id("et_pb_contact_message_1"));
+            textArea[1].SendKeys("test text");
+
+            var captcha = driver.FindElement(By.ClassName("et_pb_contact_captcha_question"));
+            var captchaParts = captcha.Text.Split(' ');
+
+            //show example of how this will work in Chrome dev tools but not in code
+            var captchaTextBox = driver.FindElement(By.XPath("//*[@class='input et_pb_contact_captcha']"));
+            var captchaAnswer = int.Parse(captchaParts[0]) +
+                int.Parse(captchaParts[1]) +
+                int.Parse(captchaParts[2]);
+
+            // et_pb_contact_submit et_pb_button
         }
         [TestCleanup]
         public void CleanUp()
