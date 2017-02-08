@@ -1,2 +1,5 @@
 QtpTests/chromedriver-license.txt
 QtpTests/chromedriver-license.txt
+*/bin*
+*/obj*
+*packages/*
