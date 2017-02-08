@@ -160,14 +160,22 @@ namespace ElementInteractions
         {
             driver.Navigate().GoToUrl("http://www.ultimateqa.com/filling-out-forms/");
             //find the name field
+
+            var nameField = driver.FindElement(By.Id("et_pb_contact_name_1"));
+            nameField.Clear();
+            nameField.SendKeys("test");
             //clear the field
             //type into the field
 
             //find the text field
+            var textBox = driver.FindElement(By.Id("et_pb_contact_message_1"));
             //clear the field
+            textBox.Clear();
             //type into the field
-
+            textBox.SendKeys("testing");
             //submit
+            var submitButton = driver.FindElements(By.ClassName("et_contact_bottom_container"));
+            submitButton[0].Submit();
         }
 
         [TestMethod]
@@ -182,15 +190,16 @@ namespace ElementInteractions
             textArea[1].SendKeys("test text");
 
             var captcha = driver.FindElement(By.ClassName("et_pb_contact_captcha_question"));
-            var captchaParts = captcha.Text.Split(' ');
-
             //show example of how this will work in Chrome dev tools but not in code
-            var captchaTextBox = driver.FindElement(By.XPath("//*[@class='input et_pb_contact_captcha']"));
             var table = new DataTable();
             var captchaAnswer = (int)table.Compute(captcha.Text,"");
+
+            var captchaTextBox = driver.FindElement(By.XPath("//*[@class='input et_pb_contact_captcha']"));
             captchaTextBox.SendKeys(captchaAnswer.ToString());
 
-            driver.FindElement(By.XPath("//*[@class='et_pb_contact_submit et_pb_button']")).Submit();
+            driver.FindElements(By.XPath("//*[@class='et_pb_contact_submit et_pb_button']"))[1].Submit();
+            var successMessage = driver.FindElements(By.ClassName("et-pb-contact-message"))[1].FindElement(By.TagName("p"));
+            Assert.IsTrue(successMessage.Text.Equals("Success"));
         }
 
         [TestMethod]
