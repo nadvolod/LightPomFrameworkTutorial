@@ -206,35 +206,54 @@ namespace ElementInteractions
         [TestCategory("Driver Interrogation")]
         public void DriverLevelInterrogation()
         {
+            driver.Navigate().GoToUrl("http://www.ultimateqa.com/automation");
             var x = driver.CurrentWindowHandle;
+            var y = driver.WindowHandles;
             x = driver.PageSource;
             x = driver.Title;
             x = driver.Url;
-            var y = driver.WindowHandles;
         }
 
         [TestMethod]
         [TestCategory("Element Interrogation")]
         public void ElementInterrogation()
         {
-            var myElement = driver.FindElement(By.Id(""));
+            driver.Navigate().GoToUrl("http://www.ultimateqa.com/automation/");
+            var myElement = driver.FindElement(By.XPath("//*[@href='http://courses.ultimateqa.com/users/sign_in']"));
         }
 
         [TestMethod]
         [TestCategory("Element Interrogation")]
         public void ElementInterrogationTest()
         {
+            driver.Url = "http://www.ultimateqa.com/simple-html-elements-for-automation/";
+            driver.Manage().Window.Maximize();
             //1. find button by Id
-            //2. GetAttribute("type") and assert that it equals "submit"
-            //3. GetCssValue()
+            //2. GetAttribute("type") and assert that it equals the right value
+            //3. GetCssValue("letter-spacing") and assert that it equals the correct value
             //4. Assert that it's Displayed
             //5. Assert that it's Enabled
             //6. Assert that it's NOT selected
-            //7. Assert that the TextName is "Click Me!"
-            //8. Assert that the TagName is "button"
-            //9. Assert that the size is a specific value 72x21
-            //10. Assert that the location is a specific coordinate, but of course it won't be, so the students will try, but will realize that it can't work
-            var myElement = driver.FindElement(By.Id(""));
+            //7. Assert that the Text is correct
+            //8. Assert that the TagName is correct
+            //9. Assert that the size height is 21
+            //10. Assert that the location is x=190, y=330
+
+
+
+
+
+            var myElement = driver.FindElement(By.Id("button1"));
+            Assert.AreEqual("submit", myElement.GetAttribute("type"));
+            Assert.AreEqual("normal", myElement.GetCssValue("letter-spacing"));
+            Assert.IsTrue(myElement.Displayed);
+            Assert.IsTrue(myElement.Enabled);
+            Assert.IsFalse(myElement.Selected);
+            Assert.AreEqual(myElement.Text, "Click Me!");
+            Assert.AreEqual("button", myElement.TagName);
+            Assert.AreEqual(21, myElement.Size.Height);
+            Assert.AreEqual(190, myElement.Location.X);
+            Assert.AreEqual(330, myElement.Location.Y);
         }
 
 
