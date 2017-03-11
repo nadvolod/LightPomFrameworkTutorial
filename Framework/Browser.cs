@@ -83,7 +83,7 @@ namespace Framework
 
         public static void Initialize()
         {
-            _webDriver = GetDriver(Drivers.Firefox);
+            _webDriver = GetDriver(Drivers.Chrome);
             Goto("");
         }
 
