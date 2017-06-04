@@ -13,36 +13,40 @@ namespace SampleFramework1
     {
         private IWebDriver Driver { get; set; }
         internal TestUser TheTestUser { get; private set; }
+        internal SampleApplicationPage SampleAppPage { get; private set; }
+        internal TestUser EmergencyContactUser { get; private set; }
 
         [TestMethod]
         [Description("Validate that user is able to fill out the form successfully using valid data.")]
         public void Test1()
         {
-            TheTestUser.GenderType = Gender.Female;
+            SetGenderTypes(Gender.Female, Gender.Female);
 
-            var sampleApplicationPage = new SampleApplicationPage(Driver);
-            sampleApplicationPage.GoTo();
-            var ultimateQAHomePage = sampleApplicationPage.FillOutFormAndSubmit(TheTestUser);
-            Assert.IsTrue(ultimateQAHomePage.IsVisible, "UltimateQA home page was not visible.");
+            SampleAppPage.GoTo();
+            SampleAppPage.FillOutEmergencyContactForm(EmergencyContactUser);
+            var ultimateQAHomePage = SampleAppPage.FillOutPrimaryContactFormAndSubmit(TheTestUser);
+            AssertPageVisible(ultimateQAHomePage);
         }
         [TestMethod]
         [Description("Fake 2nd test.")]
         public void PretendTestNumber2()
         {
-            var sampleApplicationPage = new SampleApplicationPage(Driver);
-            sampleApplicationPage.GoTo();
-            var ultimateQAHomePage = sampleApplicationPage.FillOutFormAndSubmit(TheTestUser);
-            Assert.IsFalse(!ultimateQAHomePage.IsVisible, "UltimateQA home page was not visible.");
+            SampleAppPage.GoTo();
+            SampleAppPage.FillOutEmergencyContactForm(EmergencyContactUser);
+            var ultimateQAHomePage = SampleAppPage.FillOutPrimaryContactFormAndSubmit(TheTestUser);
+            AssertPageVisibleVariation2(ultimateQAHomePage);
         }
+
         [TestMethod]
         [Description("Validate that when selecting the Other gender type, the form is submitted successfully.")]
         public void Test3()
         {
-            TheTestUser.GenderType = Gender.Other;
-            var sampleApplicationPage = new SampleApplicationPage(Driver);
-            sampleApplicationPage.GoTo();
-            var ultimateQAHomePage = sampleApplicationPage.FillOutFormAndSubmit(TheTestUser);
-            Assert.IsFalse(!ultimateQAHomePage.IsVisible, "UltimateQA home page was not visible.");
+            SetGenderTypes(Gender.Other, Gender.Other);
+
+            SampleAppPage.GoTo();
+            SampleAppPage.FillOutEmergencyContactForm(EmergencyContactUser);
+            var ultimateQAHomePage = SampleAppPage.FillOutPrimaryContactFormAndSubmit(TheTestUser);
+            AssertPageVisibleVariation2(ultimateQAHomePage);
         }
 
         private IWebDriver GetChromeDriver()
@@ -62,9 +66,31 @@ namespace SampleFramework1
         public void SetupForEverySingleTestMethod()
         {
             Driver = GetChromeDriver();
+            SampleAppPage = new SampleApplicationPage(Driver);
+
             TheTestUser = new TestUser();
             TheTestUser.FirstName = "Nikolay";
             TheTestUser.LastName = "BLahzah";
+
+            EmergencyContactUser = new TestUser();
+            EmergencyContactUser.FirstName = "Emergency First Name";
+            EmergencyContactUser.LastName = "Emergency Last Name";
+        }
+
+        private static void AssertPageVisible(UltimateQAHomePage ultimateQAHomePage)
+        {
+            Assert.IsTrue(ultimateQAHomePage.IsVisible, "UltimateQA home page was not visible.");
+        }
+
+        private static void AssertPageVisibleVariation2(UltimateQAHomePage ultimateQAHomePage)
+        {
+            Assert.IsFalse(!ultimateQAHomePage.IsVisible, "UltimateQA home page was not visible.");
+        }
+
+        private void SetGenderTypes(Gender primaryContact, Gender emergencyContact)
+        {
+            TheTestUser.GenderType = primaryContact;
+            EmergencyContactUser.GenderType = emergencyContact;
         }
     }
 }

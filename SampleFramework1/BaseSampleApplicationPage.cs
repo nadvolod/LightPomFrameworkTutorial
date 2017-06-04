@@ -2,7 +2,7 @@
 
 namespace SampleFramework1
 {
-    internal class BaseSampleApplicationPage
+    public class BaseSampleApplicationPage
     {
         protected IWebDriver Driver { get; set; }
 
