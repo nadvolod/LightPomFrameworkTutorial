@@ -55,16 +55,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseApplicationPage.cs" />
-    <Compile Include="BaseTest.cs" />
-    <Compile Include="ContactUsPage.cs" />
-    <Compile Include="HomePage.cs" />
+    <Compile Include="Pages\BaseApplicationPage.cs" />
+    <Compile Include="Tests\BaseTest.cs" />
+    <Compile Include="Pages\ContactUsPage.cs" />
+    <Compile Include="Pages\HomePage.cs" />
     <Compile Include="Item.cs" />
-    <Compile Include="PBI1.cs" />
+    <Compile Include="Tests\PBI1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SearchFunctionality.cs" />
-    <Compile Include="SearchPage.cs" />
-    <Compile Include="ContactUsFeature.cs" />
+    <Compile Include="Pages\Slider.cs" />
+    <Compile Include="Tests\SliderFeature.cs" />
+    <Compile Include="Tests\SearchFunctionality.cs" />
+    <Compile Include="Pages\SearchPage.cs" />
+    <Compile Include="Tests\ContactUsFeature.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

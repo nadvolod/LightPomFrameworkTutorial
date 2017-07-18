@@ -1,5 +1,4 @@
 ﻿using OpenQA.Selenium;
-using System;
 
 namespace SampleApp2
 {
@@ -15,14 +14,16 @@ namespace SampleApp2
             {
                 try
                 {
-                    return Driver.FindElement(By.Id("center_column")).Displayed;
+                    return CenterColumn.Displayed;
                 }
                 catch (NoSuchElementException)
                 {
                     return false;
                 }
             }
-        } 
+        }
+
+        public IWebElement CenterColumn => Driver.FindElement(By.Id("center_column"));
 
         internal void GoTo()
         {

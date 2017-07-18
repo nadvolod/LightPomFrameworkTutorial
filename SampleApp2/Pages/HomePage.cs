@@ -5,7 +5,11 @@ namespace SampleApp2
     internal class HomePage : BaseApplicationPage
     {
         public HomePage(IWebDriver driver) : base(driver)
-        {        }
+        {
+            Slider = new Slider(driver);
+        }
+
+        public Slider Slider { get; internal set; }
 
         internal void GoTo()
         {

@@ -1,7 +1,4 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using OpenQA.Selenium;
-using AutomationResources;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace SampleApp2
 {
@@ -18,6 +15,8 @@ namespace SampleApp2
             contactUsPage.GoTo();
             Assert.IsTrue(contactUsPage.IsLoaded,
                 "The contact us page did not open successfully.");
+
+
         }
 
     }

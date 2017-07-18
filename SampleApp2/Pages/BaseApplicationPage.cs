@@ -2,7 +2,7 @@
 
 namespace SampleApp2
 {
-    internal class BaseApplicationPage
+    public class BaseApplicationPage
     {
         protected IWebDriver Driver { get; set; }
         public BaseApplicationPage(IWebDriver driver)
