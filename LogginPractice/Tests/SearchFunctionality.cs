@@ -4,7 +4,8 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace LogginPractice.Tests
 {
     [TestClass]
-    [TestCategory("SearchingFeature"), TestCategory("SampleApp2")]
+    [TestCategory("SearchingFeature"), TestCategory("SampleApp2"), 
+        TestCategory("Logging")]
     public class SearchFunctionality : BaseTest
     {
         [TestMethod]
