@@ -38,6 +38,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ExtentReports, Version=3.0.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ExtentReports.3.0.2\lib\ExtentReports.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.VisualStudio.TestPlatform.TestFramework, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\MSTest.TestFramework.1.1.18\lib\net45\Microsoft.VisualStudio.TestPlatform.TestFramework.dll</HintPath>
     </Reference>
@@ -59,12 +62,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Item.cs" />
+    <Compile Include="NamespaceSetup.cs" />
     <Compile Include="Pages\BaseApplicationPage.cs" />
     <Compile Include="Pages\ContactUsPage.cs" />
     <Compile Include="Pages\HomePage.cs" />
     <Compile Include="Pages\SearchPage.cs" />
     <Compile Include="Pages\Slider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reporter.cs" />
+    <Compile Include="ScreenshotTaker.cs" />
     <Compile Include="Tests\BaseTest.cs" />
     <Compile Include="Tests\ContactUsFeature.cs" />
     <Compile Include="Tests\PBI1.cs" />

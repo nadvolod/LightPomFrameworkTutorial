@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using AventStack.ExtentReports;
+using OpenQA.Selenium;
 
 namespace CreatingReports.Pages
 {
@@ -14,7 +15,10 @@ namespace CreatingReports.Pages
             {
                 try
                 {
-                    return CenterColumn.Displayed;
+                    Reporter.LogTestStepForBugLogger(Status.Info,
+                        "Validate that Contact Us page loaded successfully.");
+                    var displayed = CenterColumn.Displayed;
+                    return displayed;
                 }
                 catch (NoSuchElementException)
                 {
@@ -27,8 +31,10 @@ namespace CreatingReports.Pages
 
         internal void GoTo()
         {
+            var url = "http://automationpractice.com/index.php?controller=contact";
             Driver.Navigate().
-                GoToUrl("http://automationpractice.com/index.php?controller=contact");
+                GoToUrl(url);
+            Reporter.LogPassingTestStepForBugLogger($"Open url=>{url} for Contact Us page.");
         }
     }
 }

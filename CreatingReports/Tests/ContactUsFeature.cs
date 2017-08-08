@@ -16,8 +16,6 @@ namespace CreatingReports.Tests
             contactUsPage.GoTo();
             Assert.IsTrue(contactUsPage.IsLoaded,
                 "The contact us page did not open successfully.");
-
-
         }
 
     }
