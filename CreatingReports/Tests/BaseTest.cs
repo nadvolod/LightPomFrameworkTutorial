@@ -10,10 +10,10 @@ namespace CreatingReports.Tests
     [TestClass]
     public class BaseTest
     {
-        protected IWebDriver Driver { get; private set; }
-        public TestContext TestContext { get; set; }
         private static TestContext _testContext;
         private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
+        protected IWebDriver Driver { get; private set; }
+        public TestContext TestContext { get; set; }
         private ScreenshotTaker ScreenshotTaker { get; set; }
 
         [TestInitialize]
@@ -24,6 +24,7 @@ namespace CreatingReports.Tests
             Driver = factory.Create(BrowserType.Chrome);
             ScreenshotTaker = new ScreenshotTaker(Driver, TestContext);
         }
+
         [TestCleanup]
         public void TearDownForEverySingleTestMethod()
         {
@@ -47,6 +48,7 @@ namespace CreatingReports.Tests
                 Logger.Debug("*************************************** TEST STOPPED");
             }
         }
+
         private void TakeScreenshotForTestFailure()
         {
             if (ScreenshotTaker != null)
@@ -59,6 +61,7 @@ namespace CreatingReports.Tests
                 Reporter.ReportTestOutcome("");
             }
         }
+
         private void StopBrowser()
         {
             if (Driver == null)

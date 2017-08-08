@@ -5,7 +5,8 @@ namespace CreatingReports.Pages
 {
     internal class HomePage : BaseApplicationPage
     {
-        private static Logger _logger = LogManager.GetCurrentClassLogger();
+        private static readonly Logger _logger = LogManager.GetCurrentClassLogger();
+
         public HomePage(IWebDriver driver) : base(driver)
         {
             Slider = new Slider(driver);

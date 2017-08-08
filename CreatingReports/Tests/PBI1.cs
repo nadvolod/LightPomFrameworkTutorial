@@ -9,7 +9,6 @@ namespace CreatingReports.Tests
         [Description("This is the description of the test case")]
         [TestProperty("Author", "NikolayAdvolodkin")]
         [TestMethod]
-
         public void TCID1()
         {
         }

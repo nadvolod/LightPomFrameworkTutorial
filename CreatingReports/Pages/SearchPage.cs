@@ -7,6 +7,7 @@ namespace CreatingReports.Pages
     internal class SearchPage : BaseApplicationPage
     {
         private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
+
         public SearchPage(IWebDriver driver) : base(driver)
         {
         }

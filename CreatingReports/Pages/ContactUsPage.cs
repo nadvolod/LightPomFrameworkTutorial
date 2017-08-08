@@ -32,8 +32,7 @@ namespace CreatingReports.Pages
         internal void GoTo()
         {
             var url = "http://automationpractice.com/index.php?controller=contact";
-            Driver.Navigate().
-                GoToUrl(url);
+            Driver.Navigate().GoToUrl(url);
             Reporter.LogPassingTestStepForBugLogger($"Open url=>{url} for Contact Us page.");
         }
     }

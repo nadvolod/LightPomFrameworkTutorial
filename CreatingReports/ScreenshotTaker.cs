@@ -51,7 +51,7 @@ namespace CreatingReports
 
         private Screenshot GetScreenshot()
         {
-            return ((ITakesScreenshot)_driver)?.GetScreenshot();
+            return ((ITakesScreenshot) _driver)?.GetScreenshot();
         }
 
         private bool TryToSaveScreenshot(string screenshotFileName, Screenshot ss)

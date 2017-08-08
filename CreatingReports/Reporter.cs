@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using System.IO;
 using AventStack.ExtentReports;
 using AventStack.ExtentReports.Reporter;
