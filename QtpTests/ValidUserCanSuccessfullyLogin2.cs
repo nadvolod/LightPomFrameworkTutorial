@@ -1,5 +1,8 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System.IO;
+using System.Reflection;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 
 namespace QtpTests
@@ -7,7 +10,7 @@ namespace QtpTests
     [TestClass]
     public class ValidUserCanSuccessfullyLogin2
     {
-        static  IWebDriver driver = new FirefoxDriver();
+        static  IWebDriver driver = GetChromeDriver();
 
         [TestMethod]
         public void RunTest()
@@ -41,6 +44,11 @@ namespace QtpTests
         {
             driver.Navigate().GoToUrl("https://www.qtptutorial.net/wp-login.php");
 
+        }
+        private static IWebDriver GetChromeDriver()
+        {
+            var outPutDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            return new ChromeDriver(outPutDirectory);
         }
     }
 }

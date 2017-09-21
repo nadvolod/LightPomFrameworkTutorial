@@ -1,6 +1,9 @@
 ﻿using System.Collections.Generic;
+using System.IO;
+using System.Reflection;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 
 namespace QtpTests
@@ -8,7 +11,7 @@ namespace QtpTests
     [TestClass]
     public class ElementIdentification : TestBase
     {
-        static IWebDriver driver = new FirefoxDriver();
+        static IWebDriver driver = GetChromeDriver();
         private IWebElement element;
         private By locator;
 
@@ -108,6 +111,11 @@ namespace QtpTests
             ////How do you get an html table that has no id?
             locator = By.TagName("table");
             IList<IWebElement> tables = driver.FindElements(locator);
+        }
+        private static IWebDriver GetChromeDriver()
+        {
+            var outPutDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            return new ChromeDriver(outPutDirectory);
         }
 
         [TestCleanup]

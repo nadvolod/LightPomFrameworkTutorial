@@ -1,5 +1,8 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System.IO;
+using System.Reflection;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 
 
@@ -12,7 +15,7 @@ namespace QtpTests
         public void RunTest()
         {
             //here we create a new instance of the Firefox driver
-            var driver = new FirefoxDriver();
+            var driver = GetChromeDriver();
             driver.Navigate().GoToUrl("https://www.qtptutorial.net/wp-login.php");
 
             //find the field for ther user name
@@ -27,6 +30,11 @@ namespace QtpTests
 
             var error = driver.FindElement(By.Id("login_error"));
             Assert.IsTrue(error.Displayed, "The error message for a user with an invalid user name was not displayed.");
+        }
+        private static IWebDriver GetChromeDriver()
+        {
+            var outPutDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            return new ChromeDriver(outPutDirectory);
         }
     }
 }
