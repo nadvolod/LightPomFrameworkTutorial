@@ -10,7 +10,7 @@ namespace CreatingReports.Tests
     [TestClass]
     public class BaseTest
     {
-        private static TestContext _testContext;
+        //private static TestContext _testContext;
         private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
         protected IWebDriver Driver { get; private set; }
         public TestContext TestContext { get; set; }
@@ -19,6 +19,8 @@ namespace CreatingReports.Tests
         [TestInitialize]
         public void SetupForEverySingleTestMethod()
         {
+            Logger.Debug("*************************************** TEST STARTED");
+            Logger.Debug("*************************************** TEST STARTED");
             Reporter.AddTestCaseMetadataToHtmlReport(TestContext);
             var factory = new WebDriverFactory();
             Driver = factory.Create(BrowserType.Chrome);

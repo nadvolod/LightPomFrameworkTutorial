@@ -21,7 +21,7 @@ namespace CreatingReports
         }
 
         public string ScreenshotFilePath { get; private set; }
-        public string ScreenshotFileName { get; set; }
+        private string ScreenshotFileName { get; set; }
 
         public void CreateScreenshotIfTestFailed()
         {

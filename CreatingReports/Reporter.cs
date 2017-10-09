@@ -10,7 +10,7 @@ namespace CreatingReports
     public static class Reporter
     {
         private static readonly Logger TheLogger = LogManager.GetCurrentClassLogger();
-        private static ExtentReports HtmlReporter { get; set; }
+        private static ExtentReports ReportManager { get; set; }
         private static string ApplicationDebuggingFolder => "c://temp/CreatingReports";
 
         private static string HtmlReportFullPath { get; set; }
@@ -28,8 +28,8 @@ namespace CreatingReports
                             "Going to initialize the reporter next...");
             CreateReportDirectory();
             var htmlReporter = new ExtentHtmlReporter(HtmlReportFullPath);
-            HtmlReporter = new ExtentReports();
-            HtmlReporter.AttachReporter(htmlReporter);
+            ReportManager = new ExtentReports();
+            ReportManager.AttachReporter(htmlReporter);
         }
 
         private static void CreateReportDirectory()
@@ -45,7 +45,7 @@ namespace CreatingReports
         public static void AddTestCaseMetadataToHtmlReport(TestContext testContext)
         {
             MyTestContext = testContext;
-            CurrentTestCase = HtmlReporter.CreateTest(MyTestContext.TestName);
+            CurrentTestCase = ReportManager.CreateTest(MyTestContext.TestName);
         }
 
         public static void LogPassingTestStepForBugLogger(string message)
@@ -77,7 +77,7 @@ namespace CreatingReports
                     break;
             }
 
-            HtmlReporter.Flush();
+            ReportManager.Flush();
         }
 
         public static void LogTestStepForBugLogger(Status status, string message)
