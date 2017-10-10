@@ -33,7 +33,7 @@ namespace CreatingReports.Pages
         {
             var url = "http://automationpractice.com/index.php?controller=contact";
             Driver.Navigate().GoToUrl(url);
-            Reporter.LogPassingTestStepForBugLogger($"Open url=>{url} for Contact Us page.");
+            Reporter.LogPassingTestStepToBugLogger($"Open url=>{url} for Contact Us page.");
         }
     }
 }

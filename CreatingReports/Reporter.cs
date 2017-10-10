@@ -48,7 +48,7 @@ namespace CreatingReports
             CurrentTestCase = ReportManager.CreateTest(MyTestContext.TestName);
         }
 
-        public static void LogPassingTestStepForBugLogger(string message)
+        public static void LogPassingTestStepToBugLogger(string message)
         {
             TheLogger.Info(message);
             CurrentTestCase.Log(Status.Pass, message);

@@ -14,7 +14,7 @@ namespace CreatingReports.Pages
 
         internal bool Contains(Item itemToCheckFor)
         {
-            Reporter.LogPassingTestStepForBugLogger($"Validate that item=>{itemToCheckFor} exists.");
+            Reporter.LogPassingTestStepToBugLogger($"Validate that item=>{itemToCheckFor} exists.");
 
             switch (itemToCheckFor)
             {
