@@ -1,4 +1,6 @@
-﻿using OpenQA.Selenium;
+﻿using AventStack.ExtentReports;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using OpenQA.Selenium;
 
 namespace CreatingReports.Pages
 {
@@ -15,6 +17,14 @@ namespace CreatingReports.Pages
         internal void ClickNextButton()
         {
             Driver.FindElement(By.ClassName("bx-next")).Click();
+            Reporter.LogPassingTestStepToBugLogger("Click the next button in the slider.");
+        }
+
+        public void AssertThatImageChanged(string currentImage, string newImage)
+        {
+            Reporter.LogTestStepForBugLogger(Status.Info, "Validate that the images rotated in the slider.");
+            Assert.AreNotEqual(currentImage, newImage,
+                "The slider images did not change when pressing the next button.");
         }
     }
 }

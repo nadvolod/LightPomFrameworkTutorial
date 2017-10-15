@@ -1,4 +1,5 @@
-﻿using NLog;
+﻿using AventStack.ExtentReports;
+using NLog;
 using OpenQA.Selenium;
 
 namespace CreatingReports.Pages
@@ -18,7 +19,7 @@ namespace CreatingReports.Pages
         {
             var url = "http://automationpractice.com";
             Driver.Navigate().GoToUrl(url);
-            _logger.Info($"Open url=>{url}");
+            Reporter.LogPassingTestStepToBugLogger($"In a browser, go to url=>{url}");
         }
 
         internal SearchPage Search(string itemToSearchFor)
@@ -26,7 +27,9 @@ namespace CreatingReports.Pages
             _logger.Trace("Attempting to perform a Search.");
             Driver.FindElement(By.Id("search_query_top")).SendKeys(itemToSearchFor);
             Driver.FindElement(By.Name("submit_search")).Click();
-            _logger.Info($"Search for an item in the search bar=>{itemToSearchFor}");
+            Reporter.LogTestStepForBugLogger(Status.Info,
+                $"Search for=>{itemToSearchFor} in the search bar on the page.");
+            //_logger.Info($"Search for an item in the search bar=>{itemToSearchFor}");
             return new SearchPage(Driver);
         }
     }

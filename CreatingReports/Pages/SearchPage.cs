@@ -1,4 +1,5 @@
 ﻿using System;
+using AventStack.ExtentReports;
 using NLog;
 using OpenQA.Selenium;
 
@@ -14,7 +15,8 @@ namespace CreatingReports.Pages
 
         internal bool Contains(Item itemToCheckFor)
         {
-            Reporter.LogPassingTestStepToBugLogger($"Validate that item=>{itemToCheckFor} exists.");
+            Reporter.LogTestStepForBugLogger(Status.Info,
+                $"Validate that item=>{itemToCheckFor} exists.");
 
             switch (itemToCheckFor)
             {
