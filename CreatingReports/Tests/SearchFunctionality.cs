@@ -19,7 +19,7 @@ namespace CreatingReports.Tests
             var homePage = new HomePage(Driver);
             homePage.GoTo();
             var searchPage = homePage.Search(stringToSearch);
-            Assert.IsFalse(searchPage.Contains(Item.Blouse),
+            Assert.IsTrue(searchPage.Contains(Item.Blouse),
                 $"When searching for the string=>{stringToSearch}, " +
                 $"we did not find it in the search results.");
         }
