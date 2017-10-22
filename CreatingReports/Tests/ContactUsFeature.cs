@@ -33,14 +33,7 @@ namespace CreatingReports.Tests
             
         }
 
-        [TestMethod]
-        [TestProperty("Author", "NikolayAdvolodkin")]
-        public void TCID5()
-        {
-            //1. open automation practice page
-            //2. click the Sign In button
-            //3. validate that the correct page opened
-        }
+
 
         [TestMethod]
         [TestProperty("Author", "NikolayAdvolodkin")]

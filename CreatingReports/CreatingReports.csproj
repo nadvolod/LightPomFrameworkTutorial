@@ -68,6 +68,7 @@
     <Compile Include="Pages\HeaderSection.cs" />
     <Compile Include="Pages\HomePage.cs" />
     <Compile Include="Pages\SearchPage.cs" />
+    <Compile Include="Pages\SignInPage.cs" />
     <Compile Include="Pages\Slider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reporter.cs" />
@@ -76,6 +77,7 @@
     <Compile Include="Tests\ContactUsFeature.cs" />
     <Compile Include="Tests\PBI1.cs" />
     <Compile Include="Tests\SearchFunctionality.cs" />
+    <Compile Include="Tests\SignInFunctionality.cs" />
     <Compile Include="Tests\SliderFeature.cs" />
   </ItemGroup>
   <ItemGroup>
