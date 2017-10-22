@@ -65,6 +65,7 @@
     <Compile Include="NamespaceSetup.cs" />
     <Compile Include="Pages\BaseApplicationPage.cs" />
     <Compile Include="Pages\ContactUsPage.cs" />
+    <Compile Include="Pages\HeaderSection.cs" />
     <Compile Include="Pages\HomePage.cs" />
     <Compile Include="Pages\SearchPage.cs" />
     <Compile Include="Pages\Slider.cs" />

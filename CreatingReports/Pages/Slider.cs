@@ -13,7 +13,7 @@ namespace CreatingReports.Pages
         public string CurrentImage => MainSliderImage.GetAttribute("style");
 
         private IWebElement MainSliderImage => Driver.FindElement(By.Id("homeslider"));
-
+        
         internal void ClickNextButton()
         {
             Driver.FindElement(By.ClassName("bx-next")).Click();
