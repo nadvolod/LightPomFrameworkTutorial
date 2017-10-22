@@ -24,6 +24,7 @@ namespace CreatingReports.Tests
             Reporter.AddTestCaseMetadataToHtmlReport(TestContext);
             var factory = new WebDriverFactory();
             Driver = factory.Create(BrowserType.Chrome);
+            Driver.Manage().Window.Maximize();
             ScreenshotTaker = new ScreenshotTaker(Driver, TestContext);
         }
 
