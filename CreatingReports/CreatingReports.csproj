@@ -71,6 +71,7 @@
     <Compile Include="Pages\LeftPageSection.cs" />
     <Compile Include="Pages\RandomStuffSection.cs" />
     <Compile Include="Pages\SearchPage.cs" />
+    <Compile Include="Pages\SearchResultsPage.cs" />
     <Compile Include="Pages\SignInPage.cs" />
     <Compile Include="Pages\Slider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

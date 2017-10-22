@@ -38,8 +38,8 @@ namespace CreatingReports.Tests
             //2. Perform a search for string "selenium errors"
             //3. validate that correct search results were returned
 
-            ComplicatedPage.RandomStuffSection.LeftPane.Search("selenium errors");
-
+            var searchResultsPage = ComplicatedPage.RandomStuffSection.LeftPane.Search("selenium errors");
+            Assert.IsTrue(searchResultsPage.IsLoaded, "The search page did not open");
         }
     }
 }

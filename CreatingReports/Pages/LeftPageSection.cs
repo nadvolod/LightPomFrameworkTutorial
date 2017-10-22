@@ -11,10 +11,11 @@ namespace CreatingReports.Pages
         public IWebElement SearchBox => Driver.FindElements(By.XPath("//form[@role='search']//input[@id='s']"))[0];
         public IWebElement SearchButton => SearchForm.FindElement(By.Id("searchsubmit"));
 
-        public void Search(string searchString)
+        public SearchResultsPage Search(string searchString)
         {
             SearchBox.SendKeys(searchString);
             SearchButton.Click();
+            return new SearchResultsPage(Driver);
         }
     }
 }
