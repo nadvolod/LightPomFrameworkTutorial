@@ -16,6 +16,7 @@ namespace CreatingReports.Pages
             get
             {
                 var isLoaded = Driver.Url.Contains("controller=authentication");
+                Reporter.LogTestStepForBugLogger(AventStack.ExtentReports.Status.Info, "Check if the Sign In page loaded successfully.");
                 _logger.Trace($"Did sign in page open successfully=>{isLoaded}");
                 return isLoaded;
 

@@ -15,6 +15,7 @@ namespace CreatingReports.Pages
         {
             SearchBox.SendKeys(searchString);
             SearchButton.Click();
+            Reporter.LogPassingTestStepToBugLogger($"Serach for string=>{searchString} in the left pane's Search bar.");
             return new SearchResultsPage(Driver);
         }
     }

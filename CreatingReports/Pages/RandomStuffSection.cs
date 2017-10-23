@@ -18,7 +18,9 @@ namespace CreatingReports.Pages
                     try
                     {
                         var element = wait.Until(ExpectedConditions.ElementIsVisible(By.ClassName("et-pb-contact-message")));
-                        return element.Text.Contains("Thanks for contacting us");
+                        var isSubmitted = element.Text.Contains("Thanks for contacting us");
+                        Reporter.LogTestStepForBugLogger(AventStack.ExtentReports.Status.Pass, "Validate that the form was submitted successfully");
+                        return isSubmitted;
                     }
                     catch (WebDriverTimeoutException)
                     {
@@ -42,6 +44,8 @@ namespace CreatingReports.Pages
             var result = int.Parse(split[0]) + int.Parse(split[2]);
             Driver.FindElement(By.XPath(@"//*[@class='input et_pb_contact_captcha']")).SendKeys(result.ToString());
             Driver.FindElement(By.XPath(@"//*[@class='et_pb_contact_submit et_pb_button']")).Click();
+            Reporter.LogPassingTestStepToBugLogger("Fill out the form in the Random Stuff section." +
+                $"Name={name}. Email=>{email}. Message=>{message}.");
         }
     }
 }
