@@ -21,7 +21,8 @@ namespace AutomationResources
         private IWebDriver GetChromeDriver()
         {
             var outPutDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            return new ChromeDriver(outPutDirectory);
+            var resourcesDirectory = Path.GetFullPath(Path.Combine(outPutDirectory, @"..\..\..\AutomationResources\bin\Debug"));
+            return new ChromeDriver(resourcesDirectory);
         }
     }
 }
