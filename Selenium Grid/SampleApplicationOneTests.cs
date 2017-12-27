@@ -1,9 +1,6 @@
-﻿using System.IO;
-using System.Reflection;
-using AutomationResources;
+﻿using AutomationResources;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
 using SampleFramework1;
 
 namespace Selenium_Grid
