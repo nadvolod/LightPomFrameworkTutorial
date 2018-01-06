@@ -4,6 +4,7 @@ using System;
 using System.IO;
 using System.Reflection;
 using OpenQA.Selenium.Remote;
+using OpenQA.Selenium.Safari;
 
 namespace AutomationResources
 {
@@ -31,10 +32,8 @@ namespace AutomationResources
             var caps = DesiredCapabilities.Chrome();
             caps.SetCapability(CapabilityType.Platform, "Windows 10");
 
-            var outPutDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            var resourcesDirectory = Path.GetFullPath(Path.Combine(outPutDirectory, @"..\..\..\AutomationResources\bin\Debug"));
-            ChromeOptions options = new ChromeOptions();
-            options.BinaryLocation = resourcesDirectory;
+            var options = new ChromeOptions();
+            options.BinaryLocation = GetSeleniumBinaryLocation();
             //---- >>>> Don't do this - Setting the browser name is redundant
             //options.AddAdditionalCapability(CapabilityType.BrowserName, "chrome", true);
             //options.AddAdditionalCapability(CapabilityType.Version, "48.0", true);
@@ -43,6 +42,28 @@ namespace AutomationResources
             //3. IMPORTANT - Notice the options.ToCapabilities() call!!
             return new RemoteWebDriver(new Uri("http://localhost:4444/wd/hub"), 
                 caps);
+        }
+
+        public IWebDriver CreateSauceDriver()
+        {
+
+            var capabilities = new DesiredCapabilities();
+            //---- >>>> Don't do this - Setting the browser name is redundant
+            capabilities.SetCapability(CapabilityType.BrowserName, "chrome");
+            capabilities.SetCapability(CapabilityType.Version, "latest");
+            capabilities.SetCapability(CapabilityType.Platform, "Windows 10");
+            capabilities.SetCapability("username", 
+                Environment.GetEnvironmentVariable("SAUCE_USERNAME", EnvironmentVariableTarget.User));
+            capabilities.SetCapability("accessKey", Environment.GetEnvironmentVariable("SAUCE_ACCESS_KEY",
+                EnvironmentVariableTarget.User));
+            return new RemoteWebDriver(new Uri("http://ondemand.saucelabs.com:80/wd/hub"),
+                capabilities, TimeSpan.FromSeconds(600));
+        }
+
+        private string GetSeleniumBinaryLocation()
+        {
+            var outPutDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            return Path.GetFullPath(Path.Combine(outPutDirectory ?? throw new InvalidOperationException(), @"..\..\..\AutomationResources\bin\Debug"));
         }
     }
 }
