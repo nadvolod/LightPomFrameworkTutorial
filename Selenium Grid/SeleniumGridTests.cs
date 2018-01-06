@@ -7,7 +7,7 @@ namespace Selenium_Grid
 {
     [TestClass]
     [TestCategory("SeleniumGridTests")]
-    public class SampleApplicationOneTests
+    public class SeleniumGridTests
     {
         private IWebDriver Driver { get; set; }
         internal TestUser TheTestUser { get; private set; }
@@ -62,7 +62,7 @@ namespace Selenium_Grid
         [TestInitialize]
         public void SetupForEverySingleTestMethod()
         {
-            Driver = GetChromeDriver();
+            Driver = new WebDriverFactory().CreateRemoteDriver();
             SampleAppPage = new SampleApplicationPage(Driver);
 
             TheTestUser = new TestUser();
