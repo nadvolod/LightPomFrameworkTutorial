@@ -20,6 +20,6 @@ namespace SauceLabs
             }
         }
 
-        public IWebElement StartHereButton => Driver.FindElement(By.LinkText("Start here"));
+        public IWebElement StartHereButton => Driver.FindElement(By.LinkText("Start learning now"));
     }
 }

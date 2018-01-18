@@ -46,16 +46,20 @@ namespace AutomationResources
 
         public IWebDriver CreateSauceDriver()
         {
+            //DesiredCapabilities caps = new DesiredCapabilities();
+            //caps.SetCapability("browserName", "Chrome");
+            //caps.SetCapability("platform", "Windows 8.1");
+            //caps.SetCapability("version", "62.0");
+            //caps.SetCapability("screenResolution", "1024x768");
 
-            var capabilities = new DesiredCapabilities();
-            //---- >>>> Don't do this - Setting the browser name is redundant
-            capabilities.SetCapability(CapabilityType.BrowserName, "chrome");
-            capabilities.SetCapability(CapabilityType.Version, "latest");
-            capabilities.SetCapability(CapabilityType.Platform, "Windows 10");
+            var capabilities =  DesiredCapabilities.Chrome();
+            //capabilities.SetCapability(CapabilityType.BrowserName, "chrome");
+            capabilities.SetCapability(CapabilityType.Version, "48.0");
+            capabilities.SetCapability(CapabilityType.Platform, "Linux");
             capabilities.SetCapability("username", 
                 Environment.GetEnvironmentVariable("SAUCE_USERNAME", EnvironmentVariableTarget.User));
-            capabilities.SetCapability("accessKey", Environment.GetEnvironmentVariable("SAUCE_ACCESS_KEY",
-                EnvironmentVariableTarget.User));
+            capabilities.SetCapability("accessKey", 
+                Environment.GetEnvironmentVariable("SAUCE_ACCESS_KEY", EnvironmentVariableTarget.User));
             return new RemoteWebDriver(new Uri("http://ondemand.saucelabs.com:80/wd/hub"),
                 capabilities, TimeSpan.FromSeconds(600));
         }
