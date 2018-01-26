@@ -59,3 +59,5 @@ Temporary Items
 # Uncomment if necessary however generally it will be regenerated when needed
 #!**/packages/repositories.config
 
+/.vs/LightPomFramework/v15/Server/sqlite3
+/.vs/LightPomFramework/v15/sqlite3
