@@ -2,7 +2,7 @@
 
 namespace SampleFramework1
 {
-    internal class UltimateQAHomePage : BaseSampleApplicationPage
+    public class UltimateQAHomePage : BaseSampleApplicationPage
     {
         public UltimateQAHomePage(IWebDriver driver) : base(driver){}
 
