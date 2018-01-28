@@ -1,18 +1,26 @@
-﻿using AutomationResources;
-using NUnit.Framework;
-using OpenQA.Selenium;
+﻿using NUnit.Framework;
 using SampleFramework1;
 using System.Threading;
 
 namespace Selenium_Grid
 {
-    [TestFixture]
+
     [Category("ParallelTestClasses")]
     [Parallelizable]
+    [TestFixture("chrome", "45", "Windows 7", "", "")]
+    [TestFixture("chrome", "50", "Windows 7", "", "")]
+    [TestFixture("MicrosoftEdge", "14.14393", "Windows 10", "", "")]
+    [TestFixture("chrome", "6.0", "Android", "Android Emulator", "portrait")]
+    [TestFixture("Safari", "11.2", "iOS", "iPhone X Simulator", "portrait")]
     public class AdvancedGridTestsClass1 : BaseTest
     {
+        public AdvancedGridTestsClass1(string browser, string version, string os, string deviceName, string deviceOrientation) : 
+            base(browser, version, os, deviceName, deviceOrientation)
+        {
+        }
+
         [Test]
-        public void Test1()
+        public void TestMethodInClass1()
         {
             SetGenderTypes(Gender.Female, Gender.Female);
 
@@ -21,38 +29,22 @@ namespace Selenium_Grid
             SampleAppPage.FillOutEmergencyContactForm(EmergencyContactUser);
             var ultimateQAHomePage = SampleAppPage.FillOutPrimaryContactFormAndSubmit(TheTestUser);
             AssertPageVisible(ultimateQAHomePage);
-        }
-        [Test]
-        public void Test2()
-        {
-            SetGenderTypes(Gender.Other, Gender.Other);
-
-            SampleAppPage.GoTo();
-            Thread.Sleep(20000);
-            SampleAppPage.FillOutEmergencyContactForm(EmergencyContactUser);
-            var ultimateQAHomePage = SampleAppPage.FillOutPrimaryContactFormAndSubmit(TheTestUser);
-            AssertPageVisibleVariation2(ultimateQAHomePage);
-        }
-        [Test]
-        public void Test3()
-        {
-            SetGenderTypes(Gender.Other, Gender.Other);
-
-            SampleAppPage.GoTo();
-            Thread.Sleep(20000);
-            SampleAppPage.FillOutEmergencyContactForm(EmergencyContactUser);
-            var ultimateQAHomePage = SampleAppPage.FillOutPrimaryContactFormAndSubmit(TheTestUser);
-            AssertPageVisibleVariation2(ultimateQAHomePage);
         }
 
     }
     [TestFixture]
     [Category("ParallelTestClasses")]
     [Parallelizable]
+    [TestFixture("chrome", "45", "macOS 10.13", "", "")]
+    [TestFixture("chrome", "50", "macOS 10.13", "", "")]
     public class AdvancedGridTestsClass2 : BaseTest
     {
+        public AdvancedGridTestsClass2(string browser, string version, string os, string deviceName, string deviceOrientation) : 
+            base(browser, version, os, deviceName, deviceOrientation)
+        {
+        }
         [Test]
-        public void Test1()
+        public void TestMethodInClass2()
         {
             SetGenderTypes(Gender.Female, Gender.Female);
 
@@ -62,113 +54,6 @@ namespace Selenium_Grid
             var ultimateQAHomePage = SampleAppPage.FillOutPrimaryContactFormAndSubmit(TheTestUser);
             AssertPageVisible(ultimateQAHomePage);
         }
-        [Test]
-        public void Test2()
-        {
-            SetGenderTypes(Gender.Other, Gender.Other);
 
-            SampleAppPage.GoTo();
-            Thread.Sleep(20000);
-            SampleAppPage.FillOutEmergencyContactForm(EmergencyContactUser);
-            var ultimateQAHomePage = SampleAppPage.FillOutPrimaryContactFormAndSubmit(TheTestUser);
-            AssertPageVisibleVariation2(ultimateQAHomePage);
-        }
-        [Test]
-        public void Test3()
-        {
-            SetGenderTypes(Gender.Other, Gender.Other);
-
-            SampleAppPage.GoTo();
-            Thread.Sleep(20000);
-            SampleAppPage.FillOutEmergencyContactForm(EmergencyContactUser);
-            var ultimateQAHomePage = SampleAppPage.FillOutPrimaryContactFormAndSubmit(TheTestUser);
-            AssertPageVisibleVariation2(ultimateQAHomePage);
-        }
-
-    }
-
-    [TestFixture]
-    [Category("AdvancedSeleniumGridTestsForMethods")]
-    public class AdvancedGridTests
-    {
-        private IWebDriver Driver { get; set; }
-        internal TestUser TheTestUser { get; private set; }
-        internal SampleApplicationPage SampleAppPage { get; private set; }
-        internal TestUser EmergencyContactUser { get; private set; }
-
-        [Test]
-        [Parallelizable]
-        public void Test1()
-        {
-            SetGenderTypes(Gender.Female, Gender.Female);
-
-            SampleAppPage.GoTo();
-            Thread.Sleep(20000);
-            SampleAppPage.FillOutEmergencyContactForm(EmergencyContactUser);
-            var ultimateQAHomePage = SampleAppPage.FillOutPrimaryContactFormAndSubmit(TheTestUser);
-            AssertPageVisible(ultimateQAHomePage);
-        }
-        [Test]
-        [Parallelizable]
-        public void Test2()
-        {
-            SetGenderTypes(Gender.Other, Gender.Other);
-
-            SampleAppPage.GoTo();
-            Thread.Sleep(20000);
-            SampleAppPage.FillOutEmergencyContactForm(EmergencyContactUser);
-            var ultimateQAHomePage = SampleAppPage.FillOutPrimaryContactFormAndSubmit(TheTestUser);
-            AssertPageVisibleVariation2(ultimateQAHomePage);
-        }
-        [Test]
-        [Parallelizable]
-        public void Test3()
-        {
-            SetGenderTypes(Gender.Other, Gender.Other);
-
-            SampleAppPage.GoTo();
-            Thread.Sleep(20000);
-            SampleAppPage.FillOutEmergencyContactForm(EmergencyContactUser);
-            var ultimateQAHomePage = SampleAppPage.FillOutPrimaryContactFormAndSubmit(TheTestUser);
-            AssertPageVisibleVariation2(ultimateQAHomePage);
-        }
-
-        [TearDown]
-        public void CleanUpAfterEveryTestMethod()
-        {
-            Driver.Close();
-            Driver.Quit();
-        }
-
-        [SetUp]
-        public void SetupForEverySingleTestMethod()
-        {
-            Driver = new WebDriverFactory().CreateSauceDriver();
-            SampleAppPage = new SampleApplicationPage(Driver);
-
-            TheTestUser = new TestUser();
-            TheTestUser.FirstName = "Nikolay";
-            TheTestUser.LastName = "BLahzah";
-
-            EmergencyContactUser = new TestUser();
-            EmergencyContactUser.FirstName = "Emergency First Name";
-            EmergencyContactUser.LastName = "Emergency Last Name";
-        }
-
-        private static void AssertPageVisible(UltimateQAHomePage ultimateQAHomePage)
-        {
-            Assert.IsTrue(ultimateQAHomePage.IsVisible, "UltimateQA home page was not visible.");
-        }
-
-        private static void AssertPageVisibleVariation2(UltimateQAHomePage ultimateQAHomePage)
-        {
-            Assert.IsFalse(!ultimateQAHomePage.IsVisible, "UltimateQA home page was not visible.");
-        }
-
-        private void SetGenderTypes(Gender primaryContact, Gender emergencyContact)
-        {
-            TheTestUser.GenderType = primaryContact;
-            EmergencyContactUser.GenderType = emergencyContact;
-        }
     }
 }
