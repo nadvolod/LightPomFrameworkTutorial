@@ -1,6 +1,7 @@
 ﻿using System.Threading;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Interactions;
 
 namespace SauceLabs
 {
@@ -15,9 +16,11 @@ namespace SauceLabs
             }
             internal set { }
         }
+
+        private Actions WebDriverActions => new Actions(Driver);
         private string PageTitle => "Sample Application Lifecycle - Sprint 4 - Ultimate QA";
 
-        public IWebElement FirstNameField => Driver.FindElement(By.Name("firstname"));
+        public IWebElement FirstNameField =>  Driver.FindElement(By.Name("firstname"));
 
         public IWebElement SubmitButton => Driver.FindElement(By.XPath("//*[@type='submit']"));
 
@@ -67,6 +70,7 @@ namespace SauceLabs
         internal UltimateQAHomePage FillOutPrimaryContactFormAndSubmit(TestUser user)
         {
             SetGender(user);
+            //WebDriverActions.MoveToElement(FirstNameField).SendKeys(user.FirstName);
             FirstNameField.SendKeys(user.FirstName);
             LastNameField.SendKeys(user.LastName);
             SubmitButton.Submit();

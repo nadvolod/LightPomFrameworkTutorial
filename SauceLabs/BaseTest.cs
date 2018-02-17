@@ -1,5 +1,6 @@
 ﻿using AutomationResources;
 using NUnit.Framework;
+using NUnit.Framework.Interfaces;
 using OpenQA.Selenium;
 
 namespace SauceLabs
@@ -28,6 +29,9 @@ namespace SauceLabs
         [TearDown]
         public void CleanUpAfterEveryTestMethod()
         {
+            var sauceResult = TestContext.CurrentContext.Result.Outcome.Status != (TestStatus.Passed);
+
+            ((IJavaScriptExecutor)Driver).ExecuteScript($"sauce:job-result={sauceResult}");
             Driver.Close();
             Driver.Quit();
         }
@@ -35,7 +39,17 @@ namespace SauceLabs
         [SetUp]
         public void SetupForEverySingleTestMethod()
         {
-            Driver = new WebDriverFactory().CreateSauceDriver(Browser, Version, OS, DeviceName, DeviceOrientation);
+            var sauceConfig = new SauceConfiguration
+            {
+                Browser = Browser,
+                Version = Version,
+                OS = OS,
+                DeviceName = DeviceName,
+                DeviceOrientation = DeviceOrientation,
+                TestCaseName = TestContext.CurrentContext.Test.FullName
+            };
+
+            Driver = new WebDriverFactory().CreateSauceDriver(sauceConfig);
             SampleAppPage = new SampleApplicationPage(Driver);
 
             TheTestUser = new TestUser();

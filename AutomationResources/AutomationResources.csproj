@@ -56,6 +56,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BrowserType.cs" />
+    <Compile Include="SauceConfiguration.cs" />
     <Compile Include="WebDriverFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -4,7 +4,7 @@ using NUnit.Framework;
 namespace SauceLabs
 {
 
-    [Category("ParallelTestClasses")]
+    [Category("DataDrivenParallelTests")]
     [Parallelizable]
     [TestFixture("chrome", "45", "Windows 7", "", "")]
     [TestFixture("chrome", "50", "Windows 7", "", "")]
@@ -31,7 +31,7 @@ namespace SauceLabs
 
     }
     [TestFixture]
-    [Category("ParallelTestClasses")]
+    [Category("DataDrivenParallelTests")]
     [Parallelizable]
     [TestFixture("chrome", "45", "macOS 10.13", "", "")]
     [TestFixture("chrome", "50", "macOS 10.13", "", "")]

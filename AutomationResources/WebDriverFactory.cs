@@ -43,6 +43,14 @@ namespace AutomationResources
                 capabilities, TimeSpan.FromSeconds(600));
         }
 
+        public IWebDriver CreateSauceDriver(SauceConfiguration sauceConfig)
+        {
+            var driver = CreateSauceDriver(sauceConfig.Browser, sauceConfig.Version, sauceConfig.OS,
+                sauceConfig.DeviceName, sauceConfig.DeviceOrientation);
+            ((IJavaScriptExecutor)driver).ExecuteScript($"sauce:job-name={sauceConfig.TestCaseName}");
+            return driver;
+        }
+
         public IWebDriver CreateRemoteDriver()
         {
             var caps = DesiredCapabilities.Chrome();
