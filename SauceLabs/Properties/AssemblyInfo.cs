@@ -1,5 +1,7 @@
 using System.Reflection;
 using System.Runtime.InteropServices;
+using NUnit;
+using NUnit.Framework;
 
 [assembly: AssemblyTitle("SauceLabs")]
 [assembly: AssemblyDescription("")]
@@ -9,6 +11,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyCopyright("Copyright ©  2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
+[assembly: LevelOfParallelism(6)]
 
 [assembly: ComVisible(false)]
 

@@ -1,4 +1,4 @@
-﻿using System.Threading;
+﻿
 using NUnit.Framework;
 
 namespace SauceLabs
@@ -14,7 +14,7 @@ namespace SauceLabs
             SetGenderTypes(Gender.Female, Gender.Female);
 
             SampleAppPage.GoTo();
-            Thread.Sleep(20000);
+
             SampleAppPage.FillOutEmergencyContactForm(EmergencyContactUser);
             var ultimateQAHomePage = SampleAppPage.FillOutPrimaryContactFormAndSubmit(TheTestUser);
             AssertPageVisible(ultimateQAHomePage);
@@ -25,7 +25,6 @@ namespace SauceLabs
             SetGenderTypes(Gender.Other, Gender.Other);
 
             SampleAppPage.GoTo();
-            Thread.Sleep(20000);
             SampleAppPage.FillOutEmergencyContactForm(EmergencyContactUser);
             var ultimateQAHomePage = SampleAppPage.FillOutPrimaryContactFormAndSubmit(TheTestUser);
             AssertPageVisibleVariation2(ultimateQAHomePage);
@@ -36,7 +35,6 @@ namespace SauceLabs
             SetGenderTypes(Gender.Other, Gender.Other);
 
             SampleAppPage.GoTo();
-            Thread.Sleep(20000);
             SampleAppPage.FillOutEmergencyContactForm(EmergencyContactUser);
             var ultimateQAHomePage = SampleAppPage.FillOutPrimaryContactFormAndSubmit(TheTestUser);
             AssertPageVisibleVariation2(ultimateQAHomePage);
@@ -54,7 +52,6 @@ namespace SauceLabs
             SetGenderTypes(Gender.Female, Gender.Female);
 
             SampleAppPage.GoTo();
-            Thread.Sleep(20000);
             SampleAppPage.FillOutEmergencyContactForm(EmergencyContactUser);
             var ultimateQAHomePage = SampleAppPage.FillOutPrimaryContactFormAndSubmit(TheTestUser);
             AssertPageVisible(ultimateQAHomePage);
@@ -65,7 +62,6 @@ namespace SauceLabs
             SetGenderTypes(Gender.Other, Gender.Other);
 
             SampleAppPage.GoTo();
-            Thread.Sleep(20000);
             SampleAppPage.FillOutEmergencyContactForm(EmergencyContactUser);
             var ultimateQAHomePage = SampleAppPage.FillOutPrimaryContactFormAndSubmit(TheTestUser);
             AssertPageVisibleVariation2(ultimateQAHomePage);
@@ -76,11 +72,43 @@ namespace SauceLabs
             SetGenderTypes(Gender.Other, Gender.Other);
 
             SampleAppPage.GoTo();
-            Thread.Sleep(20000);
             SampleAppPage.FillOutEmergencyContactForm(EmergencyContactUser);
             var ultimateQAHomePage = SampleAppPage.FillOutPrimaryContactFormAndSubmit(TheTestUser);
             AssertPageVisibleVariation2(ultimateQAHomePage);
         }
 
+    }
+
+    [TestFixture]
+    [Category("SimpleParallelTestClasses")]
+    [Parallelizable]
+    public class ParallelSauceExample3 : FirstBaseTest
+    {
+        [Test]
+        public void Test1()
+        {
+            SetGenderTypes(Gender.Female, Gender.Female);
+
+            SampleAppPage.GoTo();
+            SampleAppPage.FillOutEmergencyContactForm(EmergencyContactUser);
+            var ultimateQAHomePage = SampleAppPage.FillOutPrimaryContactFormAndSubmit(TheTestUser);
+            AssertPageVisible(ultimateQAHomePage);
+        }
+    }
+    [TestFixture]
+    [Category("SimpleParallelTestClasses")]
+    [Parallelizable]
+    public class ParallelSauceExample4 : FirstBaseTest
+    {
+        [Test]
+        public void Test1()
+        {
+            SetGenderTypes(Gender.Female, Gender.Female);
+
+            SampleAppPage.GoTo();
+            SampleAppPage.FillOutEmergencyContactForm(EmergencyContactUser);
+            var ultimateQAHomePage = SampleAppPage.FillOutPrimaryContactFormAndSubmit(TheTestUser);
+            AssertPageVisible(ultimateQAHomePage);
+        }
     }
 }
