@@ -1,8 +1,7 @@
-﻿using NUnit.Framework;
-using SampleFramework1;
-using System.Threading;
+﻿using System.Threading;
+using NUnit.Framework;
 
-namespace Selenium_Grid
+namespace SauceLabs
 {
 
     [Category("ParallelTestClasses")]
@@ -12,9 +11,9 @@ namespace Selenium_Grid
     [TestFixture("MicrosoftEdge", "14.14393", "Windows 10", "", "")]
     [TestFixture("chrome", "6.0", "Android", "Android Emulator", "portrait")]
     [TestFixture("Safari", "11.2", "iOS", "iPhone X Simulator", "portrait")]
-    public class AdvancedGridTestsClass1 : BaseTest
+    public class AdvancedSauceTests : BaseTest
     {
-        public AdvancedGridTestsClass1(string browser, string version, string os, string deviceName, string deviceOrientation) : 
+        public AdvancedSauceTests(string browser, string version, string os, string deviceName, string deviceOrientation) : 
             base(browser, version, os, deviceName, deviceOrientation)
         {
         }
@@ -25,7 +24,6 @@ namespace Selenium_Grid
             SetGenderTypes(Gender.Female, Gender.Female);
 
             SampleAppPage.GoTo();
-            Thread.Sleep(20000);
             SampleAppPage.FillOutEmergencyContactForm(EmergencyContactUser);
             var ultimateQAHomePage = SampleAppPage.FillOutPrimaryContactFormAndSubmit(TheTestUser);
             AssertPageVisible(ultimateQAHomePage);

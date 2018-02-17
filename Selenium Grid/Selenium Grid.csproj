@@ -56,10 +56,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseSampleApplicationPage.cs" />
-    <Compile Include="BaseTest.cs" />
     <Compile Include="Gender.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="AdvancedGridTests.cs" />
     <Compile Include="SeleniumGridTests.cs" />
     <Compile Include="SampleApplicationPage.cs" />
     <Compile Include="TestUser.cs" />

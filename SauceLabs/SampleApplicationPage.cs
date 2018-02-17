@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System.Threading;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
 
 namespace SauceLabs
@@ -57,6 +58,7 @@ namespace SauceLabs
         internal void GoTo()
         {
             Driver.Navigate().GoToUrl("https://www.ultimateqa.com/sample-application-lifecycle-sprint-4/");
+            Thread.Sleep(60000);
             Assert.IsTrue(IsVisible, 
                 $"Sample application page was not visible. Expected=>{PageTitle}." +
                 $"Actual=>{Driver.Title}");

@@ -1,9 +1,8 @@
 ﻿using AutomationResources;
 using NUnit.Framework;
 using OpenQA.Selenium;
-using SampleFramework1;
 
-namespace Selenium_Grid
+namespace SauceLabs
 {
     [TestFixture]
     public class BaseTest
