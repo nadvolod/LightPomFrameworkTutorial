@@ -56,7 +56,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ParallelSauceExample1.cs" />
     <Compile Include="BaseSampleApplicationPage.cs" />
+    <Compile Include="FirstBaseTest.cs" />
     <Compile Include="Gender.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SampleApplicationPage.cs" />
