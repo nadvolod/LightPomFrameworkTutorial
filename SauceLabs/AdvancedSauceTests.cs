@@ -21,12 +21,8 @@ namespace SauceLabs
         [Test]
         public void TestMethodInClass1()
         {
-            SetGenderTypes(Gender.Female, Gender.Female);
-
-            SampleAppPage.GoTo();
-            SampleAppPage.FillOutEmergencyContactForm(EmergencyContactUser);
-            var ultimateQAHomePage = SampleAppPage.FillOutPrimaryContactFormAndSubmit(TheTestUser);
-            AssertPageVisible(ultimateQAHomePage);
+            Driver.Navigate().GoToUrl("https://www.google.com");
+            Assert.Pass("passed the test");
         }
 
     }

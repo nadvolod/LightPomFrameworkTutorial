@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using System.Threading;
+using OpenQA.Selenium;
 
 namespace SauceLabs
 {
@@ -21,5 +22,12 @@ namespace SauceLabs
         }
 
         public IWebElement StartHereButton => Driver.FindElement(By.LinkText("Start learning now"));
+
+        public UltimateQAHomePage Open()
+        {
+            Driver.Navigate().GoToUrl("https://www.ultimateqa.com");
+            Thread.Sleep(65000);
+            return this;
+        }
     }
 }

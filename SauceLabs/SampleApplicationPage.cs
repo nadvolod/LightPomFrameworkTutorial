@@ -47,7 +47,7 @@ namespace SauceLabs
                 case Gender.Male:
                     break;
                 case Gender.Female:
-                    FemaleGenderRadioButtonForEmergencyContact.Click();
+                    WebDriverActions.MoveToElement(FemaleGenderRadioButtonForEmergencyContact).Click();
                     break;
                 case Gender.Other:
                     break;
@@ -70,10 +70,9 @@ namespace SauceLabs
         internal UltimateQAHomePage FillOutPrimaryContactFormAndSubmit(TestUser user)
         {
             SetGender(user);
-            //WebDriverActions.MoveToElement(FirstNameField).SendKeys(user.FirstName);
-            FirstNameField.SendKeys(user.FirstName);
-            LastNameField.SendKeys(user.LastName);
-            SubmitButton.Submit();
+            WebDriverActions.MoveToElement(FirstNameField).SendKeys(user.FirstName);
+            WebDriverActions.MoveToElement(LastNameField).SendKeys(user.LastName);
+            WebDriverActions.MoveToElement(SubmitButton).Click();
             return new UltimateQAHomePage(Driver);
         }
 
@@ -84,7 +83,7 @@ namespace SauceLabs
                 case Gender.Male:
                     break;
                 case Gender.Female:
-                    FemaleGenderRadioButton.Click();
+                    WebDriverActions.MoveToElement(FemaleGenderRadioButton).Click();
                     break;
                 case Gender.Other:
                     break;

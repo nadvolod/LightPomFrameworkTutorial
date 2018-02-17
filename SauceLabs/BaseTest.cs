@@ -29,9 +29,12 @@ namespace SauceLabs
         [TearDown]
         public void CleanUpAfterEveryTestMethod()
         {
-            var sauceResult = TestContext.CurrentContext.Result.Outcome.Status != (TestStatus.Passed);
+            string isTestPassed= "failed";
+            if (TestContext.CurrentContext.Result.Outcome.Status == TestStatus.Passed)
+                isTestPassed = "passed";
 
-            ((IJavaScriptExecutor)Driver).ExecuteScript($"sauce:job-result={sauceResult}");
+            ((IJavaScriptExecutor)Driver).ExecuteScript($"sauce:job-result={isTestPassed}");
+            ((IJavaScriptExecutor)Driver).ExecuteScript($"sauce:context=={TestContext.CurrentContext.Result.Message}");
             Driver.Close();
             Driver.Quit();
         }
