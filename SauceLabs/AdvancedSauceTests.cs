@@ -35,9 +35,9 @@ namespace SauceLabs
     [Parallelizable]
     [TestFixture("chrome", "45", "macOS 10.13", "", "")]
     [TestFixture("chrome", "50", "macOS 10.13", "", "")]
-    public class AdvancedGridTestsClass2 : BaseTest
+    public class AdvancedSauceTests2 : BaseTest
     {
-        public AdvancedGridTestsClass2(string browser, string version, string os, string deviceName, string deviceOrientation) : 
+        public AdvancedSauceTests2(string browser, string version, string os, string deviceName, string deviceOrientation) : 
             base(browser, version, os, deviceName, deviceOrientation)
         {
         }
