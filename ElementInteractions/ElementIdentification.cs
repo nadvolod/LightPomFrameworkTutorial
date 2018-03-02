@@ -93,7 +93,7 @@ namespace ElementInteractions
             //const string DESIRED_COLUMN_HEADER = "Salary";
             //const string DESIRED_VALUE = "Software Development Engineer in Test";
 
-            //for (int tr = 0; tr <= collectionOfRows.Count; tr++)    //for every single row in the table
+            //for (int tr = 0; tr < collectionOfRows.Count; tr++)    //for every single row in the table
             //{
             //    var row = collectionOfRows[tr];
 
