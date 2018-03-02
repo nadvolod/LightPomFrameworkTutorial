@@ -34,7 +34,7 @@ namespace SauceLabs
                 isTestPassed = "passed";
 
             ((IJavaScriptExecutor)Driver).ExecuteScript($"sauce:job-result={isTestPassed}");
-            ((IJavaScriptExecutor)Driver).ExecuteScript($"sauce:context=={TestContext.CurrentContext.Result.Message}");
+            ((IJavaScriptExecutor)Driver).ExecuteScript($"sauce:context={TestContext.CurrentContext.Result.Message}");
             Driver.Close();
             Driver.Quit();
         }
@@ -49,7 +49,7 @@ namespace SauceLabs
                 OS = OS,
                 DeviceName = DeviceName,
                 DeviceOrientation = DeviceOrientation,
-                TestCaseName = TestContext.CurrentContext.Test.FullName
+                TestCaseName = TestContext.CurrentContext.Test.MethodName
             };
 
             Driver = new WebDriverFactory().CreateSauceDriver(sauceConfig);

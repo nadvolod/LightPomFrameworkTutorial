@@ -25,6 +25,7 @@ namespace SauceLabs
 
         public UltimateQAHomePage Open()
         {
+            ((IJavaScriptExecutor)Driver).ExecuteScript($"sauce:job-name=navigate to https://www.ultimateqa.com");
             Driver.Navigate().GoToUrl("https://www.ultimateqa.com");
             Thread.Sleep(65000);
             return this;

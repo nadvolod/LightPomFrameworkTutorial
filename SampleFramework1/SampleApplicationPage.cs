@@ -31,6 +31,9 @@ namespace SampleFramework1
 
         internal void FillOutEmergencyContactForm(TestUser emergencyContactUser)
         {
+            //having trouble interacting with elements, don't forget solutions here
+            //https://www.ultimateqa.com/common-selenium-webdriver-errors-fix/
+
             SetGenderForEmergencyContact(emergencyContactUser);
             FirstNameFieldForEmergencyContact.SendKeys(emergencyContactUser.FirstName);
             LastNameFieldForEmergencyContact.SendKeys(emergencyContactUser.LastName);
