@@ -56,6 +56,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DefaultWait.cs" />
+    <Compile Include="TestClass1.cs" />
     <Compile Include="ImplicitWait.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WebDriverCreator.cs" />

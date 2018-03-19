@@ -67,3 +67,5 @@ Temporary Items
 .vs/LightPomFramework/v15/sqlite3/storage.ide-wal
 /WebDriverTimeoutsTutorial/WebDriverTimeoutsTutorial.csproj.user
 /ElementInteractions/Y.cs
+.vs/LightPomFramework/v15/.suo
+*.suo

@@ -37,9 +37,8 @@ namespace WebdriverTimeoutsTutorial
             //click the start button
             _driver.FindElement(By.TagName("button")).Click();
             //find the element that has the text Hello World
-            var text = _driver.FindElement(By.XPath(".//*[contains(text(),'Hello World!')]"));
-            //click on the text
-            text.Click();
+            Assert.IsTrue(_driver.FindElement(By.XPath(".//*[contains(text(),'Hello World!')]")).Displayed);
+
         }
 
         [TestMethod]
