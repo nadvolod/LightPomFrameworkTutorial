@@ -9,7 +9,7 @@ namespace WebdriverTimeoutsTutorial
 {
     [TestClass]
     [TestCategory("Implicit waits")]
-    public class SeleniumSynchronizationExamples
+    public class ImplicitWaits
     {
         private IWebDriver _driver;
 
@@ -48,7 +48,7 @@ namespace WebdriverTimeoutsTutorial
         //[ExpectedException(typeof(ElementNotVisibleException))]
         public void Test1_FixedImplicitly()
         {
-            _driver.Navigate().GoToUrl(URI);
+            _driver.Navigate().GoToUrl(URL.SlowAnimationUrl);
             _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
             FillOutCreditCardInfo();
             _driver.FindElement(By.Id("go")).Click();
