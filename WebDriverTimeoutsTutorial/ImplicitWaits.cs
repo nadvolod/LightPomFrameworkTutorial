@@ -7,7 +7,7 @@ namespace WebdriverTimeoutsTutorial
 {
     [TestClass]
     [TestCategory("Implicit waits")]
-    public class TestClass1
+    public class SeleniumSynchronizationExamples
     {
         private IWebDriver _driver;
         private const string URI = "http://awful-valentine.com/purchase-forms/slow-animation/";
@@ -43,7 +43,7 @@ namespace WebdriverTimeoutsTutorial
         }
 
         [TestMethod]
-        public void DynamicallyLoadingElementsTestFailure_FixedImplicitly()
+        public void Test1_FixedImplicitly()
         {
             _driver.Navigate().GoToUrl(URI);
             _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
@@ -51,9 +51,34 @@ namespace WebdriverTimeoutsTutorial
             _driver.FindElement(By.Id("go")).Click();
             Assert.IsTrue(_driver.FindElement(By.Id("success")).Displayed);
         }
+        [TestMethod]
+        public void Test2_ImplicitWaitExample()
+        {
+            _driver.Navigate().GoToUrl("https://www.ultimateqa.com");
+            _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
+            Assert.IsTrue(_driver.FindElement(By.Id("success")).Displayed);
+        }
+        [TestMethod]
+        public void Test3_ImplicitWait_HiddenElement()
+        {
+            _driver.Navigate().GoToUrl("https://the-internet.herokuapp.com/dynamic_loading/1");
+            SetImplicitWaitAndAssert();
+        }
+        [TestMethod]
+        public void Test4_ImplicitWait_RenderedAfter()
+        {
+            _driver.Navigate().GoToUrl("https://the-internet.herokuapp.com/dynamic_loading/2");
+            _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
+            Assert.IsTrue(_driver.FindElement(By.Id("finish")).Displayed);
+        }
+        private void SetImplicitWaitAndAssert()
+        {
+            _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
+            Assert.IsTrue(_driver.FindElement(By.Id("finish")).Displayed);
+        }
 
         [TestMethod]
-        public void DynamicallyLoadingElementsTestFailure_FixedExplicitly()
+        public void Test1_FixedExplicitly()
         {
             _driver.Navigate().GoToUrl(URI);
             FillOutCreditCardInfo();
