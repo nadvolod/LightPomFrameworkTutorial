@@ -1,7 +1,9 @@
 ﻿using System;
+using AutomationResources;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
+using WebDriverTimeoutsTutorial;
 
 namespace WebdriverTimeoutsTutorial
 {
@@ -10,12 +12,11 @@ namespace WebdriverTimeoutsTutorial
     public class SeleniumSynchronizationExamples
     {
         private IWebDriver _driver;
-        private const string URI = "http://awful-valentine.com/purchase-forms/slow-animation/";
 
         [TestInitialize]
         public void Setup()
         {
-            _driver = WebDriverCreator.BasicInitialize();
+           _driver = new WebDriverFactory().Create(BrowserType.Chrome);
         }
 
         [TestCleanup]
@@ -26,9 +27,10 @@ namespace WebdriverTimeoutsTutorial
         }
 
         [TestMethod]
+        //[ExpectedException(typeof(ElementNotVisibleException))]
         public void Test1()
         {
-            _driver.Navigate().GoToUrl(URI);
+            _driver.Navigate().GoToUrl(URL.SlowAnimationUrl);
             FillOutCreditCardInfo();
             _driver.FindElement(By.Id("go")).Click();
             Assert.IsTrue(_driver.FindElement(By.Id("success")).Displayed);
@@ -43,6 +45,7 @@ namespace WebdriverTimeoutsTutorial
         }
 
         [TestMethod]
+        //[ExpectedException(typeof(ElementNotVisibleException))]
         public void Test1_FixedImplicitly()
         {
             _driver.Navigate().GoToUrl(URI);
@@ -52,6 +55,7 @@ namespace WebdriverTimeoutsTutorial
             Assert.IsTrue(_driver.FindElement(By.Id("success")).Displayed);
         }
         [TestMethod]
+        //[ExpectedException(typeof(NoSuchElementException))]
         public void Test2_ImplicitWaitExample()
         {
             _driver.Navigate().GoToUrl("https://www.ultimateqa.com");
@@ -59,33 +63,23 @@ namespace WebdriverTimeoutsTutorial
             Assert.IsTrue(_driver.FindElement(By.Id("success")).Displayed);
         }
         [TestMethod]
+        //[ExpectedException(typeof(ElementNotVisibleException))]
         public void Test3_ImplicitWait_HiddenElement()
         {
-            _driver.Navigate().GoToUrl("https://the-internet.herokuapp.com/dynamic_loading/1");
-            SetImplicitWaitAndAssert();
+            _driver.Navigate().GoToUrl(URL.HiddenElementUrl);
+            SetImplicitWaitAndClick();
         }
         [TestMethod]
+        //[ExpectedException(typeof(NoSuchElementException))]
         public void Test4_ImplicitWait_RenderedAfter()
         {
-            _driver.Navigate().GoToUrl("https://the-internet.herokuapp.com/dynamic_loading/2");
-            _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
-            Assert.IsTrue(_driver.FindElement(By.Id("finish")).Displayed);
+            _driver.Navigate().GoToUrl(URL.ElementRenderedAfterUrl);
+            SetImplicitWaitAndClick();
         }
-        private void SetImplicitWaitAndAssert()
+        private void SetImplicitWaitAndClick()
         {
             _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
-            Assert.IsTrue(_driver.FindElement(By.Id("finish")).Displayed);
-        }
-
-        [TestMethod]
-        public void Test1_FixedExplicitly()
-        {
-            _driver.Navigate().GoToUrl(URI);
-            FillOutCreditCardInfo();
-            var wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(15));
-            wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("go"))).Click();
-            //_driver.FindElement(By.Id("go")).Click();
-            Assert.IsTrue(wait.Until(ExpectedConditions.ElementIsVisible(By.Id("success"))).Displayed);
+            _driver.FindElement(By.Id("finish")).Click();
         }
     }
 }

@@ -1,7 +1,9 @@
 ﻿using System;
+using AutomationResources;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
+using WebDriverTimeoutsTutorial;
 //using static OpenQA.Selenium.Support.UI.ExpectedConditions;
 
 namespace WebdriverTimeoutsTutorial
@@ -11,14 +13,13 @@ namespace WebdriverTimeoutsTutorial
     public class ExplicitWaits
     {
         private IWebDriver _driver;
-        private const string URI = "http://awful-valentine.com/purchase-forms/slow-animation/";
         By ElementToWaitFor = By.Id("finish");
 
 
         [TestInitialize]
         public void Setup()
         {
-            _driver = WebDriverCreator.BasicInitialize();
+            _driver = new WebDriverFactory().Create(BrowserType.Chrome);
         }
 
         [TestCleanup]
@@ -30,7 +31,7 @@ namespace WebdriverTimeoutsTutorial
         [TestMethod]
         public void Test1_FixedExplicitly()
         {
-            _driver.Navigate().GoToUrl(URI);
+            _driver.Navigate().GoToUrl(URL.SlowAnimationUrl);
             FillOutCreditCardInfo();
             var wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(15));
             wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("go"))).Click();
@@ -46,22 +47,22 @@ namespace WebdriverTimeoutsTutorial
         [TestMethod]
         public void Test3_ExplicitWait_HiddenElement()
         {
-            _driver.Navigate().GoToUrl("https://the-internet.herokuapp.com/dynamic_loading/1");
-            var wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(15));
+            _driver.Navigate().GoToUrl(URL.HiddenElementUrl);
+            var wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(5));
             wait.Until(ExpectedConditions.ElementToBeClickable(ElementToWaitFor)).Click();
         }
         [TestMethod]
         public void Test4_ExplicitWait_RenderedAfter()
         {
-            _driver.Navigate().GoToUrl("https://the-internet.herokuapp.com/dynamic_loading/2");
-            var wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(15));
+            _driver.Navigate().GoToUrl(URL.ElementRenderedAfterUrl);
+            var wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(5));
             wait.Until(ExpectedConditions.ElementToBeClickable(ElementToWaitFor)).Click();
         }
         //Quiz
         [TestMethod]
         public void Test3_ExplicitWaitOptions_HiddenElement()
         {
-            _driver.Navigate().GoToUrl("https://the-internet.herokuapp.com/dynamic_loading/1");
+            _driver.Navigate().GoToUrl(URL.HiddenElementUrl);
             var wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(15));
             wait.Until(ExpectedConditions.ElementExists(ElementToWaitFor)).Click();
         }
