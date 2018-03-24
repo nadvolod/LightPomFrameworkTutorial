@@ -55,6 +55,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SynchronizationTechniques.cs" />
     <Compile Include="ExplicitWaits.cs" />
     <Compile Include="ImplicitWaits.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
