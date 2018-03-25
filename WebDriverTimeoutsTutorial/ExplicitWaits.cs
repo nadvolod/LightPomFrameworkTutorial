@@ -5,7 +5,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using WebDriverTimeoutsTutorial;
-//using static OpenQA.Selenium.Support.UI.ExpectedConditions;
+using ExpectedConditions = SeleniumExtras.WaitHelpers.ExpectedConditions;
 
 namespace WebdriverTimeoutsTutorial
 {
@@ -69,12 +69,26 @@ namespace WebdriverTimeoutsTutorial
             wait.Until(ExpectedConditions.ElementToBeClickable(ElementToWaitFor)).Click();
         }
         //Quiz
+        //1. open page
+        //2. synchronize on slowest loading element
+        //3. proceed with actions
         [TestMethod]
-        public void Test3_ExplicitWaitOptions_HiddenElement()
+        public void HowToCorrectlySynchronize()
         {
-            _driver.Navigate().GoToUrl(URL.HiddenElementUrl);
-            var wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(15));
-            wait.Until(ExpectedConditions.ElementExists(ElementToWaitFor)).Click();
+
+            _driver.Navigate().GoToUrl("https://www.ultimateqa.com");
+            _driver.Manage().Window.Maximize();
+            var wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(5));
+            var firstSyncElement = By.XPath("//*[@class='et_parallax_bg et_pb_parallax_css et_pb_inner_shadow']");
+            wait.Until(ExpectedConditions.ElementIsVisible(firstSyncElement));
+
+            wait.Until(ExpectedConditions.ElementToBeClickable(By.LinkText("Automation Exercises"))).Click();
+
+            wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//h1[text()='Automation Practice']")));
+            _driver.FindElement(By.LinkText("Big page with many elements")).Click();
+
+            var finalElement = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//*[@title='girl with laptop 2']")));
+            Assert.IsTrue(finalElement.Displayed);
         }
 
         private void FillOutCreditCardInfo()
