@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using AutomationResources;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
@@ -29,6 +30,21 @@ namespace WebdriverTimeoutsTutorial
             _driver.Quit();
         }
         [TestMethod]
+        public void ExplicitWait1()
+        {
+            Thread.Sleep(1000);
+        }
+        [TestMethod]
+        public void ExplicitWait2()
+        {
+            _driver.Navigate().GoToUrl(URL.HiddenElementUrl);
+            WebDriverWait wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(20));
+            IWebElement element = wait.Until((d) =>
+            {
+                return d.FindElement(By.Id("success"));
+            });
+        }
+        [TestMethod]
         public void Test1_FixedExplicitly()
         {
             _driver.Navigate().GoToUrl(URL.SlowAnimationUrl);
@@ -37,13 +53,7 @@ namespace WebdriverTimeoutsTutorial
             wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("go"))).Click();
             Assert.IsTrue(wait.Until(ExpectedConditions.ElementIsVisible(By.Id("success"))).Displayed);
         }
-        private void FillOutCreditCardInfo()
-        {
-            _driver.FindElement(By.Id("name")).SendKeys("test name");
-            _driver.FindElement(By.Id("cc")).SendKeys("1234123412341234");
-            _driver.FindElement(By.Id("month")).SendKeys("01");
-            _driver.FindElement(By.Id("year")).SendKeys("2020");
-        }
+
         [TestMethod]
         public void Test3_ExplicitWait_HiddenElement()
         {
@@ -65,6 +75,14 @@ namespace WebdriverTimeoutsTutorial
             _driver.Navigate().GoToUrl(URL.HiddenElementUrl);
             var wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(15));
             wait.Until(ExpectedConditions.ElementExists(ElementToWaitFor)).Click();
+        }
+
+        private void FillOutCreditCardInfo()
+        {
+            _driver.FindElement(By.Id("name")).SendKeys("test name");
+            _driver.FindElement(By.Id("cc")).SendKeys("1234123412341234");
+            _driver.FindElement(By.Id("month")).SendKeys("01");
+            _driver.FindElement(By.Id("year")).SendKeys("2020");
         }
     }
 }

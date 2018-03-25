@@ -27,7 +27,7 @@ namespace WebdriverTimeoutsTutorial
         }
 
         [TestMethod]
-        //[ExpectedException(typeof(ElementNotVisibleException))]
+        [ExpectedException(typeof(ElementNotVisibleException))]
         public void Test1()
         {
             _driver.Navigate().GoToUrl(URL.SlowAnimationUrl);
@@ -45,7 +45,7 @@ namespace WebdriverTimeoutsTutorial
         }
 
         [TestMethod]
-        //[ExpectedException(typeof(ElementNotVisibleException))]
+        [ExpectedException(typeof(ElementNotVisibleException))]
         public void Test1_FixedImplicitly()
         {
             _driver.Navigate().GoToUrl(URL.SlowAnimationUrl);
@@ -55,7 +55,7 @@ namespace WebdriverTimeoutsTutorial
             Assert.IsTrue(_driver.FindElement(By.Id("success")).Displayed);
         }
         [TestMethod]
-        //[ExpectedException(typeof(NoSuchElementException))]
+        [ExpectedException(typeof(NoSuchElementException))]
         public void Test2_ImplicitWaitExample()
         {
             _driver.Navigate().GoToUrl("https://www.ultimateqa.com");
@@ -63,14 +63,14 @@ namespace WebdriverTimeoutsTutorial
             Assert.IsTrue(_driver.FindElement(By.Id("success")).Displayed);
         }
         [TestMethod]
-        //[ExpectedException(typeof(ElementNotVisibleException))]
+        [ExpectedException(typeof(ElementNotVisibleException))]
         public void Test3_ImplicitWait_HiddenElement()
         {
             _driver.Navigate().GoToUrl(URL.HiddenElementUrl);
             SetImplicitWaitAndClick();
         }
         [TestMethod]
-        //[ExpectedException(typeof(NoSuchElementException))]
+        [ExpectedException(typeof(NoSuchElementException))]
         public void Test4_ImplicitWait_RenderedAfter()
         {
             _driver.Navigate().GoToUrl(URL.ElementRenderedAfterUrl);
