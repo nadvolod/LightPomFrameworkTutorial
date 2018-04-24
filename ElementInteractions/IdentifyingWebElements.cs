@@ -24,15 +24,16 @@ namespace ElementInteractions
         public void DifferentTypesOfSeleniumLocationStrategies()
         {
             Driver.Navigate().GoToUrl("https://www.ultimateqa.com/simple-html-elements-for-automation/");
+            Driver.Manage().Window.Maximize();
             HighlightElementUsingJavaScript(By.ClassName("buttonClass"));
             HighlightElementUsingJavaScript(By.LinkText("Click me using this link text!"));
             HighlightElementUsingJavaScript(By.Name("button1"));
-            HighlightElementUsingJavaScript(By.LinkText("link text!"));
+            HighlightElementUsingJavaScript(By.PartialLinkText("link text!"));
             HighlightElementUsingJavaScript(By.TagName("div"));
             HighlightElementUsingJavaScript(By.CssSelector("#idExample"));
             HighlightElementUsingJavaScript(By.CssSelector(".buttonClass"));
-            HighlightElementUsingJavaScript(By.XPath("//[@id='idExample']"));
-            HighlightElementUsingJavaScript(By.XPath("//[@class='buttonClass']"));
+            HighlightElementUsingJavaScript(By.XPath("//*[@id='idExample']"));
+            HighlightElementUsingJavaScript(By.XPath("//*[@class='buttonClass']"));
         }
 
         private void HighlightElementUsingJavaScript(By locationStrategy, int duration = 2)
