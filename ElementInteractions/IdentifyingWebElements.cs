@@ -24,8 +24,8 @@ namespace ElementInteractions
         public void DifferentTypesOfSeleniumLocationStrategies()
         {
             Driver.Navigate().GoToUrl("https://www.ultimateqa.com/simple-html-elements-for-automation/");
-            Driver.Manage().Window.Maximize();
             HighlightElementUsingJavaScript(By.ClassName("buttonClass"));
+            HighlightElementUsingJavaScript(By.Id("idExample"));
             HighlightElementUsingJavaScript(By.LinkText("Click me using this link text!"));
             HighlightElementUsingJavaScript(By.Name("button1"));
             HighlightElementUsingJavaScript(By.PartialLinkText("link text!"));
@@ -34,6 +34,59 @@ namespace ElementInteractions
             HighlightElementUsingJavaScript(By.CssSelector(".buttonClass"));
             HighlightElementUsingJavaScript(By.XPath("//*[@id='idExample']"));
             HighlightElementUsingJavaScript(By.XPath("//*[@class='buttonClass']"));
+        }
+
+        /*
+         Highlight this link using all of the different location strategies
+             */
+        [TestMethod]
+        public void SeleniumLocationStrategiesQuiz()
+        {
+            Driver.Navigate().GoToUrl("https://www.ultimateqa.com/simple-html-elements-for-automation/");
+            var link = Driver.FindElements(By.ClassName("et_pb_blurb_description"))[4];
+            //HighlightElementUsingJavaScript(By.ClassName("et_pb_blurb_description"));
+            HighlightElementUsingJavaScript(By.Id("simpleElementsLink"));
+            HighlightElementUsingJavaScript(By.LinkText("Click this link"));
+            HighlightElementUsingJavaScript(By.Name("clickableLink"));
+            HighlightElementUsingJavaScript(By.PartialLinkText("Click this lin"));
+            HighlightElementUsingJavaScript(By.TagName("a"));
+            HighlightElementUsingJavaScript(By.CssSelector("#simpleElementsLink"));
+            HighlightElementUsingJavaScript(By.XPath("//*[@id='simpleElementsLink']"));
+        }
+
+        [TestMethod]
+        public void SeleniumElementLocationExam()
+        {
+ 
+            /*
+             *-Using only XPath!!
+             -When debugging and testing, make sure that you scroll the element into view, Selenium
+             will not scroll for you. Not yet...
+             */
+
+            //click any radio button
+            //select one checkbox
+            //after selecting that checkbox, highlight the text that it applies to
+            //select Audi from the dropdown
+            //open Tab2 and assert that it is opened. Hint, use .Text property when you find the element
+            //in the HTML Table with id, highlight one of the salary cells
+            //Highlight the center section called "Highlight me", but you can only
+            //highlight the highest level div for that element. The top parent div.
+            //Hint, this is the class - et_pb_column et_pb_column_1_3  et_pb_column_10 et_pb_css_mix_blend_mode_passthrough
+
+            Driver.FindElement(By.XPath("//*[@type='radio'][@value='male']")).Click();
+            Driver.FindElement(By.XPath("//*[@value='Bike']")).Click();
+            Driver.FindElement(By.TagName("select")).Click();
+            Driver.FindElement(By.XPath("//*[@value='audi']")).Click();
+
+            Driver.FindElement(By.XPath("//li[@class='et_pb_tab_1']")).Click();
+            Assert.AreEqual(" Tab 2 content", 
+                Driver.FindElement(By.XPath("//*[@class='et_pb_tab clearfix et_pb_tab_1 et-pb-active-slide']")).Text);
+            HighlightElementUsingJavaScript(By.XPath("//td[contains(text(),'$150,000+')]"));
+
+            //HighlightElementUsingJavaScript(By.ClassName("et_pb_column et_pb_column_1_3  et_pb_column_10 et_pb_css_mix_blend_mode_passthrough"));
+            HighlightElementUsingJavaScript(
+                By.XPath("//*[@class='et_pb_column et_pb_column_1_3  et_pb_column_10 et_pb_css_mix_blend_mode_passthrough']"));
         }
 
         private void HighlightElementUsingJavaScript(By locationStrategy, int duration = 2)
