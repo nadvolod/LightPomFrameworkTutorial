@@ -54,40 +54,7 @@ namespace ElementInteractions
             HighlightElementUsingJavaScript(By.XPath("//*[@id='simpleElementsLink']"));
         }
 
-        [TestMethod]
-        public void SeleniumElementLocationExam()
-        {
- 
-            /*
-             *-Using only XPath!!
-             -When debugging and testing, make sure that you scroll the element into view, Selenium
-             will not scroll for you. Not yet...
-             */
 
-            //click any radio button
-            //select one checkbox
-            //after selecting that checkbox, highlight the text that it applies to
-            //select Audi from the dropdown
-            //open Tab2 and assert that it is opened. Hint, use .Text property when you find the element
-            //in the HTML Table with id, highlight one of the salary cells
-            //Highlight the center section called "Highlight me", but you can only
-            //highlight the highest level div for that element. The top parent div.
-            //Hint, this is the class - et_pb_column et_pb_column_1_3  et_pb_column_10 et_pb_css_mix_blend_mode_passthrough
-
-            Driver.FindElement(By.XPath("//*[@type='radio'][@value='male']")).Click();
-            Driver.FindElement(By.XPath("//*[@value='Bike']")).Click();
-            Driver.FindElement(By.TagName("select")).Click();
-            Driver.FindElement(By.XPath("//*[@value='audi']")).Click();
-
-            Driver.FindElement(By.XPath("//li[@class='et_pb_tab_1']")).Click();
-            Assert.AreEqual(" Tab 2 content", 
-                Driver.FindElement(By.XPath("//*[@class='et_pb_tab clearfix et_pb_tab_1 et-pb-active-slide']")).Text);
-            HighlightElementUsingJavaScript(By.XPath("//td[contains(text(),'$150,000+')]"));
-
-            //HighlightElementUsingJavaScript(By.ClassName("et_pb_column et_pb_column_1_3  et_pb_column_10 et_pb_css_mix_blend_mode_passthrough"));
-            HighlightElementUsingJavaScript(
-                By.XPath("//*[@class='et_pb_column et_pb_column_1_3  et_pb_column_10 et_pb_css_mix_blend_mode_passthrough']"));
-        }
 
         private void HighlightElementUsingJavaScript(By locationStrategy, int duration = 2)
         {
@@ -209,6 +176,37 @@ namespace ElementInteractions
             //IList<IWebElement> tables = driver.FindElements(locator);
         }
 
+        [TestMethod]
+        public void SeleniumElementLocationExam()
+        {
+ 
+            /*
+             *-Using only XPath!!
+             -When debugging and testing, make sure that you scroll the element into view, Selenium
+             will not scroll for you. Not yet...
+             */
+            Driver.Navigate().GoToUrl("https://www.ultimateqa.com/simple-html-elements-for-automation/");        
+            //click any radio button, hint:  FindElement().Click();
+            Driver.FindElement(By.XPath("//*[@type='radio'][@value='male']")).Click();
+            //select one checkbox
+            Driver.FindElement(By.XPath("//*[@value='Bike']")).Click();
+            //select Audi from the dropdown
+            Driver.FindElement(By.TagName("select")).Click();
+            Driver.FindElement(By.XPath("//*[@value='audi']")).Click();
+            //open Tab2 and assert that it is opened. Hint, use .Text property when you find the element
+            Driver.FindElement(By.XPath("//li[@class='et_pb_tab_1']")).Click();
+            Assert.AreEqual("Tab 2 content", 
+                Driver.FindElement(By.XPath("//*[@class='et_pb_tab clearfix et_pb_tab_1 et-pb-active-slide']")).Text);
+            //in the HTML Table with id, highlight one of the salary cells
+            HighlightElementUsingJavaScript(By.XPath("//td[contains(text(),'$150,000+')]"));
 
+            //Highlight the center section called "Highlight me", but you can only
+            //highlight the highest level div for that element. The top parent div.
+            //Hint, this is the class - 
+            //et_pb_column et_pb_column_1_3  et_pb_column_10 et_pb_css_mix_blend_mode_passthrough
+            HighlightElementUsingJavaScript(By.ClassName("et_pb_column et_pb_column_1_3  et_pb_column_10 et_pb_css_mix_blend_mode_passthrough"));
+            HighlightElementUsingJavaScript(
+                By.XPath("//*[@class='et_pb_column et_pb_column_1_3  et_pb_column_10 et_pb_css_mix_blend_mode_passthrough']"));
+        }
     }
 }
