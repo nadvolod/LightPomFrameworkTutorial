@@ -29,6 +29,10 @@ namespace SampleFramework1
 
         public IWebElement LastNameFieldForEmergencyContact => Driver.FindElement(By.Id("l2"));
 
+        public IWebElement OtherGenderButtonForEmergencyContact => Driver.FindElement(By.Id("radio2-0"));
+
+        public IWebElement OtherGenderRadioButton => Driver.FindElement(By.Id("radio1-0"));
+
         internal void FillOutEmergencyContactForm(TestUser emergencyContactUser)
         {
             //having trouble interacting with elements, don't forget solutions here
@@ -49,6 +53,7 @@ namespace SampleFramework1
                     FemaleGenderRadioButtonForEmergencyContact.Click();
                     break;
                 case Gender.Other:
+                    OtherGenderButtonForEmergencyContact.Click();
                     break;
                 default:
                     break;
@@ -84,6 +89,7 @@ namespace SampleFramework1
                     FemaleGenderRadioButton.Click();
                     break;
                 case Gender.Other:
+                    OtherGenderRadioButton.Click();
                     break;
                 default:
                     break;
