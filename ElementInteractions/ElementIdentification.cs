@@ -27,7 +27,7 @@ namespace ElementInteractions
         [TestCategory("Navigation")]
         public void SeleniumNavigation()
         {
-            driver.Navigate().GoToUrl("http://www.ultimateqa.com/automation");
+            driver.Navigate().GoToUrl("https://www.ultimateqa.com/automation");
             driver.Navigate().Forward();
             driver.Navigate().Back();
             driver.Navigate().Refresh();
@@ -37,11 +37,11 @@ namespace ElementInteractions
         [TestCategory("Navigation")]
         public void SeleniumNavigationTest()
         {
-            //Go here and assert for title - "http://www.ultimateqa.com"
-            driver.Navigate().GoToUrl("http://www.ultimateqa.com");
+            //Go here and assert for title - "https://www.ultimateqa.com"
+            driver.Navigate().GoToUrl("https://www.ultimateqa.com");
             Assert.AreEqual("Home - Ultimate QA", driver.Title);
-            //Go here and assert for title - "http://www.ultimateqa.com/automation"
-            driver.Navigate().GoToUrl("http://www.ultimateqa.com/automation");
+            //Go here and assert for title - "https://www.ultimateqa.com/automation"
+            driver.Navigate().GoToUrl("https://www.ultimateqa.com/automation");
             Assert.AreEqual("Automation Practice - Ultimate QA", driver.Title);
             //Click link with href - /complicated-page
             driver.FindElement(By.XPath("//*[@href='/complicated-page']")).Click();
@@ -56,7 +56,7 @@ namespace ElementInteractions
         [TestCategory("Manipulation")]
         public void Manipulation()
         {
-            driver.Navigate().GoToUrl("http://www.ultimateqa.com/filling-out-forms/");
+            driver.Navigate().GoToUrl("https://www.ultimateqa.com/filling-out-forms/");
             //find the name field
 
             var nameField = driver.FindElement(By.Id("et_pb_contact_name_1"));
@@ -80,7 +80,7 @@ namespace ElementInteractions
         [TestCategory("Manipulation")]
         public void ManipulationTest()
         {
-            driver.Navigate().GoToUrl("http://www.ultimateqa.com/filling-out-forms/");
+            driver.Navigate().GoToUrl("https://www.ultimateqa.com/filling-out-forms/");
             var name = driver.FindElements(By.Id("et_pb_contact_name_1"));
             name[1].SendKeys("test");
 
@@ -104,7 +104,7 @@ namespace ElementInteractions
         [TestCategory("Driver Interrogation")]
         public void DriverLevelInterrogation()
         {
-            driver.Navigate().GoToUrl("http://www.ultimateqa.com/automation");
+            driver.Navigate().GoToUrl("https://www.ultimateqa.com/automation");
             var x = driver.CurrentWindowHandle;
             var y = driver.WindowHandles;
             x = driver.PageSource;
@@ -116,15 +116,15 @@ namespace ElementInteractions
         [TestCategory("Element Interrogation")]
         public void ElementInterrogation()
         {
-            driver.Navigate().GoToUrl("http://www.ultimateqa.com/automation/");
-            var myElement = driver.FindElement(By.XPath("//*[@href='http://courses.ultimateqa.com/users/sign_in']"));
+            driver.Navigate().GoToUrl("https://www.ultimateqa.com/automation/");
+            var myElement = driver.FindElement(By.XPath("//*[@href='https://courses.ultimateqa.com/users/sign_in']"));
         }
 
         [TestMethod]
         [TestCategory("Element Interrogation")]
         public void ElementInterrogationTest()
         {
-            driver.Url = "http://www.ultimateqa.com/simple-html-elements-for-automation/";
+            driver.Url = "https://www.ultimateqa.com/simple-html-elements-for-automation/";
             driver.Manage().Window.Maximize();
             //1. find button by Id
             //2. GetAttribute("type") and assert that it equals the right value
