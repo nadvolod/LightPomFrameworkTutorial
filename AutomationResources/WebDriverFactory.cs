@@ -91,7 +91,7 @@ namespace AutomationResources
         private string GetSeleniumBinaryLocation()
         {
             var outPutDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            return Path.GetFullPath(Path.Combine(outPutDirectory ?? throw new InvalidOperationException(), @"..\..\..\AutomationResources\bin\Debug"));
+            return Path.GetFullPath(Path.Combine(outPutDirectory, @"..\..\..\AutomationResources\bin\Debug"));
         }
     }
 }
