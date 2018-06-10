@@ -13,8 +13,8 @@ namespace CreatingReports.Pages
 
         public void GoTo()
         {
-            Driver.Navigate().GoToUrl("http://www.ultimateqa.com/complicated-page/");
-            Reporter.LogPassingTestStepToBugLogger($"Navigate to Complicated Page at url=>http://www.ultimateqa.com/complicated-page/");
+            Driver.Navigate().GoToUrl("https://www.ultimateqa.com/complicated-page/");
+            Reporter.LogPassingTestStepToBugLogger($"Navigate to Complicated Page at url=>https://www.ultimateqa.com/complicated-page/");
         }
 
         public bool IsLoaded
