@@ -8,9 +8,6 @@ namespace CreatingReports.Pages
         public ComplicatedPage(IWebDriver driver) : base(driver)
         {
         }
-
-
-
         public void GoTo()
         {
             Driver.Navigate().GoToUrl("https://www.ultimateqa.com/complicated-page/");

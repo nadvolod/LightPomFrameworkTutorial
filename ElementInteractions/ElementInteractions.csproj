@@ -60,6 +60,7 @@
     <Compile Include="ElementIdentification.cs" />
     <Compile Include="IdentifyingWebElements.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UnitTest1.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
