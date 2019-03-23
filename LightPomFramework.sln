@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SauceLabs", "SauceLabs\Sauc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CsharpPractice", "CsharpPractice\CsharpPractice.csproj", "{F9838DF8-AD1A-4D43-9F91-D069C59243ED}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PageObjects", "PageObjects\PageObjects.csproj", "{D4A653C5-4517-4C39-9381-B4122147461F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,6 +77,10 @@ Global
 		{F9838DF8-AD1A-4D43-9F91-D069C59243ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F9838DF8-AD1A-4D43-9F91-D069C59243ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F9838DF8-AD1A-4D43-9F91-D069C59243ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D4A653C5-4517-4C39-9381-B4122147461F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4A653C5-4517-4C39-9381-B4122147461F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4A653C5-4517-4C39-9381-B4122147461F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4A653C5-4517-4C39-9381-B4122147461F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
