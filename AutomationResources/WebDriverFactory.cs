@@ -22,9 +22,35 @@ namespace AutomationResources
         }
         private IWebDriver GetChromeDriver()
         {
-            var outPutDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            var resourcesDirectory = Path.GetFullPath(Path.Combine(outPutDirectory, @"..\..\..\AutomationResources\bin\Debug"));
-            return new ChromeDriver(resourcesDirectory);
+            var outPutDirectory = GetAssemblysOutputDirectory();
+            var directoryWithChromeDriver = CreateFilePathForNetCoreApps(outPutDirectory);
+            if (string.IsNullOrEmpty(directoryWithChromeDriver))
+            {
+                directoryWithChromeDriver = CreateFilePathForNetFrameworkApps(outPutDirectory);
+            }
+            return new ChromeDriver(directoryWithChromeDriver);
+        }
+
+        private static string CreateFilePathForNetFrameworkApps(string outPutDirectory)
+        {
+            //If the outputDirectory is null, a new exception will be thrown
+            //Otherwise, we will concatenate the path and create the correct one
+            return Path.GetFullPath(Path.Combine(
+                                outPutDirectory ?? throw new InvalidOperationException(),
+                                @"..\..\..\AutomationResources\bin\Debug"));
+        }
+
+        private static string CreateFilePathForNetCoreApps(string outPutDirectory)
+        {
+            var resourcesDirectory = "";
+            if (outPutDirectory != null && outPutDirectory.Contains("netcoreapp"))
+                resourcesDirectory = Path.GetFullPath(Path.Combine(outPutDirectory, @"..\..\..\..\AutomationResources\bin\Debug"));
+            return resourcesDirectory;
+        }
+
+        private static string GetAssemblysOutputDirectory()
+        {
+            return Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
         }
 
         public IWebDriver CreateSauceDriver(string browser, string version, string os, string deviceName, string deviceOrientation)
