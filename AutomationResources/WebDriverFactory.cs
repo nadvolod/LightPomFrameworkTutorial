@@ -20,6 +20,11 @@ namespace AutomationResources
                     throw new ArgumentOutOfRangeException("No such browser exists");
             }
         }
+        public IWebDriver CreateChromeDriver()
+        {
+            var directoryWithChromeDriver = GetChromeBinaryLocationInAutomationResources();
+            return new ChromeDriver(directoryWithChromeDriver);
+        }
         private IWebDriver GetChromeDriver()
         {
             var outPutDirectory = GetAssemblysOutputDirectory();
@@ -79,11 +84,11 @@ namespace AutomationResources
 
         public IWebDriver CreateRemoteDriver()
         {
-            var caps = DesiredCapabilities.Chrome();
+            var caps = new DesiredCapabilities();
             caps.SetCapability(CapabilityType.Platform, "Windows 10");
 
             var options = new ChromeOptions();
-            options.BinaryLocation = GetSeleniumBinaryLocation();
+            options.BinaryLocation = GetChromeBinaryLocationInAutomationResources();
             //---- >>>> Don't do this - Setting the browser name is redundant
             //options.AddAdditionalCapability(CapabilityType.BrowserName, "chrome", true);
             //options.AddAdditionalCapability(CapabilityType.Version, "48.0", true);
@@ -102,7 +107,7 @@ namespace AutomationResources
             //caps.SetCapability("version", "62.0");
             //caps.SetCapability("screenResolution", "1024x768");
 
-            var capabilities =  DesiredCapabilities.Chrome();
+            var capabilities =  new DesiredCapabilities();
             //capabilities.SetCapability(CapabilityType.BrowserName, "chrome");
             capabilities.SetCapability(CapabilityType.Version, "48.0");
             capabilities.SetCapability(CapabilityType.Platform, "Linux");
@@ -114,7 +119,7 @@ namespace AutomationResources
                 capabilities, TimeSpan.FromSeconds(600));
         }
 
-        private string GetSeleniumBinaryLocation()
+        private string GetChromeBinaryLocationInAutomationResources()
         {
             var outPutDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             return Path.GetFullPath(Path.Combine(outPutDirectory, @"..\..\..\AutomationResources\bin\Debug"));

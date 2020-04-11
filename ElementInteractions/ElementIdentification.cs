@@ -2,6 +2,7 @@
 using System.Data;
 using System.IO;
 using System.Reflection;
+using AutomationResources;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
@@ -19,8 +20,13 @@ namespace ElementInteractions
         [TestInitialize]
         public void TestSetup()
         {
-            var outPutDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            driver = new ChromeDriver(outPutDirectory);
+            /**
+             * Automation AutomationResources comes from our solution. It's a project called
+             * AutomationResources.
+             * We get to use it becuase we added it in References > Add Refernce > Projects > select Automation Resources
+             * Now we get to use the WebDriverFactory from the AutomationResource project.
+             */
+            driver = new AutomationResources.WebDriverFactory().CreateChromeDriver();
         }
 
         [TestMethod]
@@ -82,10 +88,10 @@ namespace ElementInteractions
         {
             driver.Navigate().GoToUrl("https://www.ultimateqa.com/filling-out-forms/");
             var name = driver.FindElements(By.Id("et_pb_contact_name_1"));
-            name[1].SendKeys("test");
+            name[0].SendKeys("test");
 
             var textArea = driver.FindElements(By.Id("et_pb_contact_message_1"));
-            textArea[1].SendKeys("test text");
+            textArea[0].SendKeys("test text");
 
             var captcha = driver.FindElement(By.ClassName("et_pb_contact_captcha_question"));
             //show example of how this will work in Chrome dev tools but not in code
