@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using OpenQA.Selenium.Chrome;
 
 namespace ElementInteractions
 {
@@ -18,7 +19,14 @@ namespace ElementInteractions
         [TestInitialize]
         public void SetupBeforeEveryTestMethod()
         {
-            Driver = new WebDriverFactory().Create(BrowserType.Chrome);
+            Driver = new ChromeDriver();
+        }
+        [TestCleanup]
+        public void CleanupAfterEveryTestMethod()
+        {
+            //If driver is not null, then Quit()
+            //always check for null driver in the TestCleanup first
+            Driver?.Quit();
         }
         [TestMethod]
         public void DifferentTypesOfSeleniumLocationStrategies()
@@ -73,11 +81,7 @@ namespace ElementInteractions
                 "style",
                 originalStyle);
         }
-        [TestCleanup]
-        public void CleanupAfterEveryTestMethod()
-        {
-            Driver.Quit();
-        }
+
 
         [TestMethod]
         public void SeleniumElementLocationExam()
