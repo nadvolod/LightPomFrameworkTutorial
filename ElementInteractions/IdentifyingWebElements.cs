@@ -18,6 +18,7 @@ namespace ElementInteractions
         {
             new DriverManager().SetUpDriver(new ChromeConfig());
             Driver = new ChromeDriver();
+            Driver.Manage().Window.Maximize();
         }
         [TestCleanup]
         public void CleanupAfterEveryTestMethod()
