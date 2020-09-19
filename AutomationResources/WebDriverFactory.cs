@@ -5,6 +5,8 @@ using System.IO;
 using System.Reflection;
 using OpenQA.Selenium.Remote;
 using OpenQA.Selenium.Safari;
+using WebDriverManager;
+using WebDriverManager.DriverConfigs.Impl;
 
 namespace AutomationResources
 {
@@ -15,7 +17,8 @@ namespace AutomationResources
             switch (browserType)
             {
                 case BrowserType.Chrome:
-                    return GetChromeDriver();
+                    new DriverManager().SetUpDriver(new ChromeConfig());
+                    return new ChromeDriver();
                 default:
                     throw new ArgumentOutOfRangeException("No such browser exists");
             }
