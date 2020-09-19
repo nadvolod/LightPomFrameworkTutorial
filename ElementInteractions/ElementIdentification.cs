@@ -22,7 +22,11 @@ namespace ElementInteractions
             _driver = new ChromeDriver();
             _driver.Manage().Window.Maximize();
         }
-
+        [TestCleanup]
+        public void CleanUp()
+        {
+            _driver?.Quit();
+        }
         [TestMethod]
         [TestCategory("Navigation")]
         public void SeleniumNavigation()
@@ -157,11 +161,6 @@ namespace ElementInteractions
 
 
 
-        [TestCleanup]
-        public void CleanUp()
-        {
-            _driver.Close();
-            _driver.Quit();
-        }
+
     }
 }
