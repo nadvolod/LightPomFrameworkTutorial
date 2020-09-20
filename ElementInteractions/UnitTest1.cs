@@ -1,8 +1,10 @@
-﻿using System;
-using AutomationResources;
+﻿using AutomationResources;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Interactions;
+using WebDriverManager;
+using WebDriverManager.DriverConfigs.Impl;
 
 namespace ElementInteractions
 {
@@ -14,10 +16,11 @@ namespace ElementInteractions
         {
             IWebElement draggable;
             IWebElement drop;
-            var driver = new WebDriverFactory().Create(BrowserType.Chrome);
+            new DriverManager().SetUpDriver(new ChromeConfig());
+            var driver = new ChromeDriver();
             var actions = new Actions(driver);
 
-            driver.Navigate().GoToUrl("http://localhost:3000/");
+            //driver.Navigate().GoToUrl("http://localhost:3000/");
 
             //var item1 = driver.FindElement(By.Id("1"));
             //var dropLocation = driver.FindElement(By.ClassName("done"));

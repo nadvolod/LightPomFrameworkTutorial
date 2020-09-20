@@ -1,12 +1,10 @@
-﻿using AutomationResources;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
+using OpenQA.Selenium.Chrome;
+using WebDriverManager;
+using WebDriverManager.DriverConfigs.Impl;
 
 namespace ElementInteractions
 {
@@ -18,7 +16,16 @@ namespace ElementInteractions
         [TestInitialize]
         public void SetupBeforeEveryTestMethod()
         {
-            Driver = new WebDriverFactory().Create(BrowserType.Chrome);
+            new DriverManager().SetUpDriver(new ChromeConfig());
+            Driver = new ChromeDriver();
+            Driver.Manage().Window.Maximize();
+        }
+        [TestCleanup]
+        public void CleanupAfterEveryTestMethod()
+        {
+            //If driver is not null, then Quit()
+            //always check for null driver in the TestCleanup first
+            Driver?.Quit();
         }
         [TestMethod]
         public void DifferentTypesOfSeleniumLocationStrategies()
@@ -73,11 +80,7 @@ namespace ElementInteractions
                 "style",
                 originalStyle);
         }
-        [TestCleanup]
-        public void CleanupAfterEveryTestMethod()
-        {
-            Driver.Quit();
-        }
+
 
         [TestMethod]
         public void SeleniumElementLocationExam()
