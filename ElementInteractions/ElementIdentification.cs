@@ -48,7 +48,7 @@ namespace ElementInteractions
             _driver.Navigate().GoToUrl("https://www.ultimateqa.com/automation");
             Assert.AreEqual("Automation Practice - Ultimate QA", _driver.Title);
             //Click link with href - /complicated-page
-            _driver.FindElement(By.XPath("//*[@href='/complicated-page']")).Click();
+            _driver.FindElement(By.XPath("//*[@href='../complicated-page']")).Click();
             //assert page title 'Complicated Page - Ultimate QA'
             Assert.AreEqual("Complicated Page - Ultimate QA", _driver.Title);
             //Go back
