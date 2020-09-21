@@ -145,7 +145,7 @@ namespace ElementInteractions
             //7. Assert that the Text is correct
             //8. Assert that the TagName is correct
             //9. Assert that the size height is 21
-            //10. Assert that the location is x=190, y=330
+            //10. Assert that the location is x=341, y=249
 
 
 
@@ -160,8 +160,8 @@ namespace ElementInteractions
             Assert.AreEqual(myElement.Text, "Click Me!");
             Assert.AreEqual("button", myElement.TagName);
             Assert.AreEqual(21, myElement.Size.Height);
-            Assert.AreEqual(190, myElement.Location.X);
-            Assert.AreEqual(330, myElement.Location.Y);
+            Assert.AreEqual(341, myElement.Location.X);
+            Assert.AreEqual(249, myElement.Location.Y);
         }
 
 
