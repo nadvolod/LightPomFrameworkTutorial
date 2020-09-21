@@ -1,7 +1,9 @@
-﻿using System.Data;
+﻿using System;
+using System.Data;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Support.UI;
 using WebDriverManager;
 using WebDriverManager.DriverConfigs.Impl;
 
@@ -100,7 +102,11 @@ namespace ElementInteractions
             captchaTextBox.SendKeys(captchaAnswer.ToString());
 
             _driver.FindElements(By.XPath("//*[@class='et_pb_contact_submit et_pb_button']"))[1].Submit();
-            var successMessage = _driver.FindElements(By.ClassName("et-pb-contact-message"))[1].FindElement(By.TagName("p"));
+
+            //Because the Success message takes sopme time to be loaded, we need to add a wait
+            WebDriverWait wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(3));
+            wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//*[@class='et-pb-contact-message']/p")));
+            var successMessage = _driver.FindElement(By.XPath("//*[@class='et-pb-contact-message']/p"));
             Assert.IsTrue(successMessage.Text.Equals("Success"));
         }
 
