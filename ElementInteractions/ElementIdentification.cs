@@ -127,7 +127,7 @@ namespace ElementInteractions
         public void ElementInterrogation()
         {
             _driver.Navigate().GoToUrl("https://www.ultimateqa.com/automation/");
-            var myElement = _driver.FindElement(By.XPath("//*[@href='https://courses.ultimateqa.com/users/sign_in']"));
+            var myElement = _driver.FindElement(By.XPath("//*[@href='http://courses.ultimateqa.com/users/sign_in']"));
         }
 
         [TestMethod]
