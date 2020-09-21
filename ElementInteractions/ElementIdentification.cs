@@ -1,7 +1,9 @@
-﻿using System.Data;
+﻿using System;
+using System.Data;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Support.UI;
 using WebDriverManager;
 using WebDriverManager.DriverConfigs.Impl;
 
@@ -48,7 +50,7 @@ namespace ElementInteractions
             _driver.Navigate().GoToUrl("https://www.ultimateqa.com/automation");
             Assert.AreEqual("Automation Practice - Ultimate QA", _driver.Title);
             //Click link with href - /complicated-page
-            _driver.FindElement(By.XPath("//*[@href='/complicated-page']")).Click();
+            _driver.FindElement(By.XPath("//*[@href='../complicated-page']")).Click();
             //assert page title 'Complicated Page - Ultimate QA'
             Assert.AreEqual("Complicated Page - Ultimate QA", _driver.Title);
             //Go back
@@ -100,7 +102,11 @@ namespace ElementInteractions
             captchaTextBox.SendKeys(captchaAnswer.ToString());
 
             _driver.FindElements(By.XPath("//*[@class='et_pb_contact_submit et_pb_button']"))[1].Submit();
-            var successMessage = _driver.FindElements(By.ClassName("et-pb-contact-message"))[1].FindElement(By.TagName("p"));
+
+            //Because the Success message takes sopme time to be loaded, we need to add a wait
+            WebDriverWait wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(3));
+            wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//*[@class='et-pb-contact-message']/p")));
+            var successMessage = _driver.FindElement(By.XPath("//*[@class='et-pb-contact-message']/p"));
             Assert.IsTrue(successMessage.Text.Equals("Success"));
         }
 
@@ -121,7 +127,7 @@ namespace ElementInteractions
         public void ElementInterrogation()
         {
             _driver.Navigate().GoToUrl("https://www.ultimateqa.com/automation/");
-            var myElement = _driver.FindElement(By.XPath("//*[@href='https://courses.ultimateqa.com/users/sign_in']"));
+            var myElement = _driver.FindElement(By.XPath("//*[@href='http://courses.ultimateqa.com/users/sign_in']"));
         }
 
         [TestMethod]
@@ -139,7 +145,7 @@ namespace ElementInteractions
             //7. Assert that the Text is correct
             //8. Assert that the TagName is correct
             //9. Assert that the size height is 21
-            //10. Assert that the location is x=190, y=330
+            //10. Assert that the location is x=341, y=249
 
 
 
@@ -154,8 +160,8 @@ namespace ElementInteractions
             Assert.AreEqual(myElement.Text, "Click Me!");
             Assert.AreEqual("button", myElement.TagName);
             Assert.AreEqual(21, myElement.Size.Height);
-            Assert.AreEqual(190, myElement.Location.X);
-            Assert.AreEqual(330, myElement.Location.Y);
+            Assert.AreEqual(341, myElement.Location.X);
+            Assert.AreEqual(249, myElement.Location.Y);
         }
 
 
