@@ -14,7 +14,7 @@ namespace SampleFramework1
                 try
                 {
                     WebDriverWait wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(10));
-                    IWebElement FreePreviewButton = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//a[@href='/selenium-java']")));
+                    IWebElement FreePreviewButton = wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.XPath("//a[@href='/selenium-java']")));
                     return FreePreviewButton.Displayed;
                 }
                 catch (NoSuchElementException)
@@ -23,7 +23,5 @@ namespace SampleFramework1
                 }
             }
         }
-
-        //public IWebElement FreePreviewButton => Driver.FindElement(By.XPath("//a[@href='/selenium-java']"));
     }
 }
