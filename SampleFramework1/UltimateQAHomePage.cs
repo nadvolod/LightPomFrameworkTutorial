@@ -1,4 +1,6 @@
 ﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
+using System;
 
 namespace SampleFramework1
 {
@@ -11,7 +13,9 @@ namespace SampleFramework1
             {
                 try
                 {
-                    return StartHereButton.Displayed;
+                    WebDriverWait wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(10));
+                    IWebElement FreePreviewButton = wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.XPath("//a[@href='/selenium-java']")));
+                    return FreePreviewButton.Displayed;
                 }
                 catch (NoSuchElementException)
                 {
@@ -19,7 +23,5 @@ namespace SampleFramework1
                 }
             }
         }
-
-        public IWebElement StartHereButton => Driver.FindElement(By.LinkText("Start here"));
     }
 }
