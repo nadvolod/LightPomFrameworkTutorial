@@ -58,7 +58,7 @@ namespace WebdriverTimeoutsTutorial
         public void Test2_ImplicitWaitExample()
         {
             _driver.Navigate().GoToUrl("https://www.ultimateqa.com");
-            _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
+            _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
             Assert.IsTrue(_driver.FindElement(By.Id("success")).Displayed);
         }
         [TestMethod]
