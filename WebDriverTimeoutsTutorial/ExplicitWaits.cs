@@ -41,7 +41,7 @@ namespace WebdriverTimeoutsTutorial
             WebDriverWait wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(20));
             IWebElement element = wait.Until((d) =>
             {
-                return d.FindElement(By.Id("success"));
+                return d.FindElement(By.Id("finish"));
             });
         }
         [TestMethod]
@@ -57,7 +57,8 @@ namespace WebdriverTimeoutsTutorial
         [TestMethod]
         public void Test3_ExplicitWait_HiddenElement()
         {
-            _driver.Navigate().GoToUrl(URL.HiddenElementUrl);
+            _driver.Navigate().GoToUrl(URL.HiddenElementUrl);           
+            _driver.FindElement(By.XPath("//button[contains(text(),'Start')]")).Click();
             var wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(5));
             wait.Until(ExpectedConditions.ElementToBeClickable(ElementToWaitFor)).Click();
         }
@@ -65,6 +66,7 @@ namespace WebdriverTimeoutsTutorial
         public void Test4_ExplicitWait_RenderedAfter()
         {
             _driver.Navigate().GoToUrl(URL.ElementRenderedAfterUrl);
+            _driver.FindElement(By.XPath("//button[contains(text(),'Start')]")).Click();
             var wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(5));
             wait.Until(ExpectedConditions.ElementToBeClickable(ElementToWaitFor)).Click();
         }
