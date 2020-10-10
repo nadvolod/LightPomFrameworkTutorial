@@ -25,7 +25,6 @@ namespace CreatingReports.Tests
             //2. Fill out and submit the form in the "Section of random stuff"
             //3. validate that form was submitted successfully
 
-
             ComplicatedPage.RandomStuffSection.FillOutFormAndSubmit("my name", "x@x.com", "my message");
             Assert.IsTrue(ComplicatedPage.RandomStuffSection.IsFormSubmitted, "The form was not submitted successfully");
 
