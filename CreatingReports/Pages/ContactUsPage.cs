@@ -1,5 +1,7 @@
 ﻿using AventStack.ExtentReports;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
+using System;
 
 namespace CreatingReports.Pages
 {
@@ -17,7 +19,8 @@ namespace CreatingReports.Pages
                 {
                     Reporter.LogTestStepForBugLogger(Status.Info,
                         "Validate that Contact Us page loaded successfully.");
-                    var displayed = CenterColumn.Displayed;
+                    WebDriverWait wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(10));
+                    var displayed = wait.Until(ExpectedConditions.ElementIsVisible(By.Id("center_column"))).Displayed;
                     return displayed;
                 }
                 catch (NoSuchElementException)

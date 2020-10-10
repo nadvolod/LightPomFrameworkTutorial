@@ -35,9 +35,9 @@ namespace CreatingReports.Pages
 
         internal void FillOutFormAndSubmit(string name, string email, string message)
         {
-            Driver.FindElement(By.Id("et_pb_contact_name_1")).SendKeys(name);
-            Driver.FindElement(By.Id("et_pb_contact_email_1")).SendKeys(email);
-            Driver.FindElement(By.Id("et_pb_contact_message_1")).SendKeys(message);
+            Driver.FindElement(By.Id("et_pb_contact_name_0")).SendKeys(name);
+            Driver.FindElement(By.Id("et_pb_contact_email_0")).SendKeys(email);
+            Driver.FindElement(By.Id("et_pb_contact_message_0")).SendKeys(message);
 
             var captchaPuzzle = Driver.FindElement(By.ClassName("et_pb_contact_captcha_question")).Text;
             var split = captchaPuzzle.Split(' ');
