@@ -41,7 +41,7 @@ namespace TDDPractice
         internal bool AreResultsReturned()
         {
             var wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(10));
-            var searchResults = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//div[contains(text(),'Found 110 results')]")));
+            var searchResults = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//div[starts-with(text(), 'Found')]")));
             return searchResults.Displayed;
         }
     }
