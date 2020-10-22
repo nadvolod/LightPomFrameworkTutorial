@@ -1,4 +1,6 @@
 ﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
+using System;
 
 namespace TDDPractice
 {
@@ -24,6 +26,23 @@ namespace TDDPractice
 
             Driver.SwitchTo().Window(Driver.WindowHandles[1]);
             return new AmazonSearchPage(Driver);
+        }
+
+        internal void SearchArticles(string searchTerm)
+        {
+            Driver.Manage().Window.Maximize();
+            var wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(10));
+            var searchBox = wait.Until(ExpectedConditions.ElementToBeClickable(By.CssSelector("#s")));
+            searchBox.Click();
+            var searchBar = Driver.FindElement(By.CssSelector("#jetpack-instant-search__box-input-1"));
+            searchBar.SendKeys(searchTerm);
+        }
+
+        internal bool AreResultsReturned()
+        {
+            var wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(10));
+            var searchResults = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//div[starts-with(text(), 'Found')]")));
+            return searchResults.Displayed;
         }
     }
 }
