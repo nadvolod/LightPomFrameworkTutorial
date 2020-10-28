@@ -34,8 +34,7 @@ namespace TDDPractice
             var wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(10));
             var searchBox = wait.Until(ExpectedConditions.ElementToBeClickable(By.CssSelector("#s")));
             searchBox.Click();
-            var searchBar = Driver.FindElement(By.CssSelector("#jetpack-instant-search__box-input-1"));
-            searchBar.SendKeys(searchTerm);
+            searchBox.SendKeys(searchTerm);
         }
 
         internal bool AreResultsReturned()
