@@ -1,9 +1,10 @@
-﻿using AutomationResources;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System.IO;
 using System.Reflection;
+using WebDriverManager;
+using WebDriverManager.DriverConfigs.Impl;
 
 namespace TDDPractice
 {
@@ -27,7 +28,8 @@ namespace TDDPractice
         [TestMethod]
         public void TestMethodNew()
         {
-            driver = new WebDriverFactory().Create(BrowserType.Chrome);
+            new DriverManager().SetUpDriver(new ChromeConfig());
+            driver = new ChromeDriver();
             var complicatedPage = new ComplicatedPage(driver);
             complicatedPage.Open();
             complicatedPage.SearchArticles("automation testing");
