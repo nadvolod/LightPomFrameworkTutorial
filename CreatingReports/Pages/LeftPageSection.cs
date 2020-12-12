@@ -1,4 +1,6 @@
 ﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
+using System;
 
 namespace CreatingReports.Pages
 {
@@ -14,7 +16,9 @@ namespace CreatingReports.Pages
         public SearchResultsPage Search(string searchString)
         {
             SearchBox.SendKeys(searchString);
-            Reporter.LogPassingTestStepToBugLogger($"Serach for string=>{searchString} in the left pane's Search bar.");
+            Reporter.LogPassingTestStepToBugLogger($"Search for string=>{searchString} in the left pane's Search bar.");
+            WebDriverWait wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(5));
+            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(By.ClassName("jetpack-instant-search__search-results-title")));
             return new SearchResultsPage(Driver);
         }
     }
