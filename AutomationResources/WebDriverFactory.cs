@@ -94,7 +94,7 @@ namespace AutomationResources
             options.BinaryLocation = GetChromeBinaryLocationInAutomationResources();
             //---- >>>> Don't do this - Setting the browser name is redundant
             //options.AddAdditionalCapability(CapabilityType.BrowserName, "chrome", true);
-            //options.AddAdditionalCapability(CapabilityType.Version, "48.0", true);
+            //options.AddAdditionalCapability(CapabilityType.Version, "latest", true);
             options.AddAdditionalCapability(CapabilityType.Platform, "Windows 10", true);
 
             //3. IMPORTANT - Notice the options.ToCapabilities() call!!
@@ -112,7 +112,7 @@ namespace AutomationResources
 
             var capabilities =  new ChromeOptions();
             //capabilities.SetCapability(CapabilityType.BrowserName, "chrome");
-            capabilities.AddAdditionalCapability(CapabilityType.Version, "48.0");
+            capabilities.AddAdditionalCapability(CapabilityType.Version, "latest");
             capabilities.AddAdditionalCapability(CapabilityType.Platform, "Linux");
             capabilities.AddAdditionalCapability("username", 
                 Environment.GetEnvironmentVariable("SAUCE_USERNAME", EnvironmentVariableTarget.User));
