@@ -63,18 +63,18 @@ namespace AutomationResources
 
         public IWebDriver CreateSauceDriver(string browser, string version, string os, string deviceName, string deviceOrientation)
         {
-            var capabilities =  new DesiredCapabilities();
-            capabilities.SetCapability(CapabilityType.BrowserName, browser);
-            capabilities.SetCapability(CapabilityType.Version, version);
-            capabilities.SetCapability(CapabilityType.Platform, os);
-            capabilities.SetCapability("deviceName", deviceName);
-            capabilities.SetCapability("deviceOrientation", deviceOrientation);
-            capabilities.SetCapability("username", 
+            var capabilities =  new ChromeOptions();
+            capabilities.AddAdditionalCapability(CapabilityType.BrowserName, browser);
+            capabilities.AddAdditionalCapability(CapabilityType.Version, version);
+            capabilities.AddAdditionalCapability(CapabilityType.Platform, os);
+            capabilities.AddAdditionalCapability("deviceName", deviceName);
+            capabilities.AddAdditionalCapability("deviceOrientation", deviceOrientation);
+            capabilities.AddAdditionalCapability("username", 
                 Environment.GetEnvironmentVariable("SAUCE_USERNAME", EnvironmentVariableTarget.User));
-            capabilities.SetCapability("accessKey", 
+            capabilities.AddAdditionalCapability("accessKey", 
                 Environment.GetEnvironmentVariable("SAUCE_ACCESS_KEY", EnvironmentVariableTarget.User));
             return new RemoteWebDriver(new Uri("http://ondemand.saucelabs.com:80/wd/hub"),
-                capabilities, TimeSpan.FromSeconds(600));
+                capabilities);
         }
 
         public IWebDriver CreateSauceDriver(SauceConfiguration sauceConfig)
@@ -87,14 +87,14 @@ namespace AutomationResources
 
         public IWebDriver CreateRemoteDriver()
         {
-            var caps = new DesiredCapabilities();
-            caps.SetCapability(CapabilityType.Platform, "Windows 10");
+            var caps = new ChromeOptions();
+            caps.AddAdditionalCapability(CapabilityType.Platform, "Windows 10");
 
             var options = new ChromeOptions();
             options.BinaryLocation = GetChromeBinaryLocationInAutomationResources();
             //---- >>>> Don't do this - Setting the browser name is redundant
             //options.AddAdditionalCapability(CapabilityType.BrowserName, "chrome", true);
-            //options.AddAdditionalCapability(CapabilityType.Version, "48.0", true);
+            //options.AddAdditionalCapability(CapabilityType.Version, "latest", true);
             options.AddAdditionalCapability(CapabilityType.Platform, "Windows 10", true);
 
             //3. IMPORTANT - Notice the options.ToCapabilities() call!!
@@ -110,16 +110,16 @@ namespace AutomationResources
             //caps.SetCapability("version", "62.0");
             //caps.SetCapability("screenResolution", "1024x768");
 
-            var capabilities =  new DesiredCapabilities();
+            var capabilities =  new ChromeOptions();
             //capabilities.SetCapability(CapabilityType.BrowserName, "chrome");
-            capabilities.SetCapability(CapabilityType.Version, "48.0");
-            capabilities.SetCapability(CapabilityType.Platform, "Linux");
-            capabilities.SetCapability("username", 
+            capabilities.AddAdditionalCapability(CapabilityType.Version, "latest");
+            capabilities.AddAdditionalCapability(CapabilityType.Platform, "Linux");
+            capabilities.AddAdditionalCapability("username", 
                 Environment.GetEnvironmentVariable("SAUCE_USERNAME", EnvironmentVariableTarget.User));
-            capabilities.SetCapability("accessKey", 
+            capabilities.AddAdditionalCapability("accessKey", 
                 Environment.GetEnvironmentVariable("SAUCE_ACCESS_KEY", EnvironmentVariableTarget.User));
             return new RemoteWebDriver(new Uri("http://ondemand.saucelabs.com:80/wd/hub"),
-                capabilities, TimeSpan.FromSeconds(600));
+                capabilities);
         }
 
         private string GetChromeBinaryLocationInAutomationResources()
