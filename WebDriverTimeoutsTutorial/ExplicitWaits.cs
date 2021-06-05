@@ -48,10 +48,10 @@ namespace WebdriverTimeoutsTutorial
         public void Test1_FixedExplicitly()
         {
             _driver.Navigate().GoToUrl(URL.SlowAnimationUrl);
-            FillOutCreditCardInfo();
+            _driver.FindElement(By.XPath("//button[@onclick='swapCheckbox()']")).Click();
             var wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(15));
-            wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("go"))).Click();
-            Assert.IsTrue(wait.Until(ExpectedConditions.ElementIsVisible(By.Id("success"))).Displayed);
+            wait.Until(ExpectedConditions.InvisibilityOfElementLocated(By.XPath("//input[@type='checkbox']")));
+            Assert.IsTrue(wait.Until(ExpectedConditions.ElementIsVisible(By.Id("message"))).Displayed);
         }
 
         [TestMethod]
@@ -91,14 +91,6 @@ namespace WebdriverTimeoutsTutorial
 
             var finalElement = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//*[@title='girl with laptop 2']")));
             Assert.IsTrue(finalElement.Displayed);
-        }
-
-        private void FillOutCreditCardInfo()
-        {
-            _driver.FindElement(By.Id("name")).SendKeys("test name");
-            _driver.FindElement(By.Id("cc")).SendKeys("1234123412341234");
-            _driver.FindElement(By.Id("month")).SendKeys("01");
-            _driver.FindElement(By.Id("year")).SendKeys("2020");
         }
     }
 }
