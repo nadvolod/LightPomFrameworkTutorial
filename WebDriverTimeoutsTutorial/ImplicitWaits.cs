@@ -15,7 +15,7 @@ namespace WebdriverTimeoutsTutorial
         [TestInitialize]
         public void Setup()
         {
-           _driver = new WebDriverFactory().Create(BrowserType.Chrome);
+            _driver = new WebDriverFactory().Create(BrowserType.Chrome);
         }
 
         [TestCleanup]
@@ -26,21 +26,32 @@ namespace WebdriverTimeoutsTutorial
         }
 
         [TestMethod]
-        [ExpectedException(typeof(NoSuchElementException))]
+        [ExpectedException(typeof(ElementNotVisibleException))]
         public void Test1()
         {
             _driver.Navigate().GoToUrl(URL.SlowAnimationUrl);
-            _driver.FindElement(By.XPath("//button[@onclick='swapCheckbox()']")).Click();
-            Assert.IsTrue(_driver.FindElement(By.Id("message")).Displayed);
+            FillOutCreditCardInfo();
+            _driver.FindElement(By.Id("go")).Click();
+            Assert.IsTrue(_driver.FindElement(By.Id("success")).Displayed);
+        }
+
+        private void FillOutCreditCardInfo()
+        {
+            _driver.FindElement(By.Id("name")).SendKeys("test name");
+            _driver.FindElement(By.Id("cc")).SendKeys("1234123412341234");
+            _driver.FindElement(By.Id("month")).SendKeys("01");
+            _driver.FindElement(By.Id("year")).SendKeys("2020");
         }
 
         [TestMethod]
+        [ExpectedException(typeof(ElementNotVisibleException))]
         public void Test1_FixedImplicitly()
         {
             _driver.Navigate().GoToUrl(URL.SlowAnimationUrl);
             _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
-            _driver.FindElement(By.XPath("//button[@onclick='swapCheckbox()']")).Click();
-            Assert.IsTrue(_driver.FindElement(By.Id("message")).Displayed);
+            FillOutCreditCardInfo();
+            _driver.FindElement(By.Id("go")).Click();
+            Assert.IsTrue(_driver.FindElement(By.Id("success")).Displayed);
         }
         [TestMethod]
         [ExpectedException(typeof(NoSuchElementException))]
