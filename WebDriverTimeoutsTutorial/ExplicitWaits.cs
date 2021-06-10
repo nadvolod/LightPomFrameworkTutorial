@@ -57,7 +57,7 @@ namespace WebdriverTimeoutsTutorial
         [TestMethod]
         public void Test3_ExplicitWait_HiddenElement()
         {
-            _driver.Navigate().GoToUrl(URL.HiddenElementUrl);           
+            _driver.Navigate().GoToUrl(URL.HiddenElementUrl);
             _driver.FindElement(By.XPath("//button[contains(text(),'Start')]")).Click();
             var wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(5));
             wait.Until(ExpectedConditions.ElementToBeClickable(ElementToWaitFor)).Click();
