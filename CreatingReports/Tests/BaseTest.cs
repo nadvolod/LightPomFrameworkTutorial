@@ -1,5 +1,4 @@
 ﻿using System;
-using AutomationResources;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NLog;
 using OpenQA.Selenium;

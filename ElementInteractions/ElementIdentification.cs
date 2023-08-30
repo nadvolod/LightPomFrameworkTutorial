@@ -147,10 +147,6 @@ namespace ElementInteractions
             //9. Assert that the size height is 21
             //10. Assert that the location is x=341, y=249
 
-
-
-
-
             var myElement = _driver.FindElement(By.Id("button1"));
             Assert.AreEqual("submit", myElement.GetAttribute("type"));
             Assert.AreEqual("normal", myElement.GetCssValue("letter-spacing"));
@@ -163,10 +159,5 @@ namespace ElementInteractions
             Assert.AreEqual(341, myElement.Location.X);
             Assert.AreEqual(249, myElement.Location.Y);
         }
-
-
-
-
-
     }
 }

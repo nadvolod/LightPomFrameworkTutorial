@@ -15,10 +15,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AutomationResources\AutomationResources.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Reference Include="WebDriver">
       <HintPath>..\packages\Selenium.WebDriver.3.4.0\lib\net40\WebDriver.dll</HintPath>
     </Reference>

@@ -81,10 +81,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="..\packages\WebDriver.ChromeDriver.win32.85.0.4183.87\content\chromedriver.exe">
-      <Link>chromedriver.exe</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="NLog.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <SubType>Designer</SubType>
@@ -97,9 +93,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AutomationResources\AutomationResources.csproj">
-      <Project>{5a79a8b7-219a-46bd-9e23-11469f5514c7}</Project>
-      <Name>AutomationResources</Name>
+    <ProjectReference Include="..\AutomationResourcesNet\AutomationResourcesNet.csproj">
+      <Project>{f4b00f7c-1b7b-4e01-a161-bdef10bdec52}</Project>
+      <Name>AutomationResourcesNet</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />

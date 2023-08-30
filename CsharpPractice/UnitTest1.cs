@@ -1,5 +1,4 @@
-﻿using System;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace CsharpPractice
@@ -52,6 +51,7 @@ namespace CsharpPractice
                 x++;
             }
         }
+
         //How many times will this loop iterate?
         [TestMethod]
         public void LoopsQuiz5()
@@ -63,6 +63,7 @@ namespace CsharpPractice
                 x++;
             }
         }
+
         //Write a program in C# Sharp to display the first 10 natural numbers
         [TestMethod]
         public void LoopsQuiz6()

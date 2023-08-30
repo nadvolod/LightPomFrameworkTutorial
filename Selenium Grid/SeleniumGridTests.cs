@@ -1,5 +1,4 @@
-﻿using AutomationResources;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
 using SampleFramework1;
 

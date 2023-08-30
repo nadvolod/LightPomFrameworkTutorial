@@ -67,13 +67,13 @@
     <Compile Include="UltimateQAHomePage.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AutomationResources\AutomationResources.csproj">
-      <Project>{5A79A8B7-219A-46BD-9E23-11469F5514C7}</Project>
-      <Name>AutomationResources</Name>
-    </ProjectReference>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <ProjectReference Include="..\AutomationResourcesNet\AutomationResourcesNet.csproj">
+      <Project>{f4b00f7c-1b7b-4e01-a161-bdef10bdec52}</Project>
+      <Name>AutomationResourcesNet</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
